@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29121A3F63200C4D754 /* HRListViewController.swift */; };
+		EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */; };
+		EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29621A405EC00C4D754 /* HRListCell.swift */; };
+		EE0DF29921A405EC00C4D754 /* HRListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0DF29721A405EC00C4D754 /* HRListCell.xib */; };
 		EE20151F21A2C4A3006D9746 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20151E21A2C4A3006D9746 /* ViewController.swift */; };
 		EE20152221A2C4A3006D9746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152021A2C4A3006D9746 /* Main.storyboard */; };
 		EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE20152321A2C4A6006D9746 /* Assets.xcassets */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE0DF29121A3F63200C4D754 /* HRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListViewController.swift; sourceTree = "<group>"; };
+		EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRWriteViewController.swift; sourceTree = "<group>"; };
+		EE0DF29621A405EC00C4D754 /* HRListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListCell.swift; sourceTree = "<group>"; };
+		EE0DF29721A405EC00C4D754 /* HRListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HRListCell.xib; sourceTree = "<group>"; };
 		EE20151921A2C4A3006D9746 /* HRMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HRMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20151C21A2C4A3006D9746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE20151E21A2C4A3006D9746 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE0DF29521A405BC00C4D754 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EE0DF29621A405EC00C4D754 /* HRListCell.swift */,
+				EE0DF29721A405EC00C4D754 /* HRListCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EE20151021A2C4A3006D9746 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +145,9 @@
 			children = (
 				EECC744621A2D17C00F17F3F /* Bridging-Header.h */,
 				EE20151C21A2C4A3006D9746 /* AppDelegate.swift */,
+				EE0DF29121A3F63200C4D754 /* HRListViewController.swift */,
+				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
+				EE0DF29521A405BC00C4D754 /* Cell */,
 				EE20151E21A2C4A3006D9746 /* ViewController.swift */,
 				EE20152021A2C4A3006D9746 /* Main.storyboard */,
 				EE20152321A2C4A6006D9746 /* Assets.xcassets */,
@@ -297,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */,
+				EE0DF29921A405EC00C4D754 /* HRListCell.xib in Resources */,
 				EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */,
 				EE20152221A2C4A3006D9746 /* Main.storyboard in Resources */,
 			);
@@ -324,7 +345,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EECC745D21A2D8C500F17F3F /* FMDatabase.h in Sources */,
+				EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */,
 				EECC745E21A2D8C500F17F3F /* FMDatabase.m in Sources */,
+				EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */,
 				EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */,
 				EECC746021A2D8C500F17F3F /* FMDatabaseAdditions.m in Sources */,
 				EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */,
@@ -335,6 +358,7 @@
 				EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */,
 				EECC746721A2D8C500F17F3F /* FMResultSet.m in Sources */,
 				EECC745C21A2D88A00F17F3F /* AppDelegate.swift in Sources */,
+				EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */,
 				EE20151F21A2C4A3006D9746 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
