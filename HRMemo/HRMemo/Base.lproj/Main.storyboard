@@ -188,6 +188,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0h2-gG-LfF"/>
                     </view>
+                    <connections>
+                        <outlet property="writeView" destination="zs4-Gz-QdB" id="1qh-T1-u32"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JII-H3-8ui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

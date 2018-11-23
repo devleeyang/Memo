@@ -27,25 +27,25 @@ class ViewController: UIViewController {
         print(docsDir)
         
         // Document/contacts.db라는 경로(커스터마이징 db임)
-        databasePath = docsDir.appending("/contacts.db")
+        databasePath = docsDir.appending("/memo.db")
         print(databasePath)
         
         if !fileMgr.fileExists(atPath: databasePath) {
             // DB 접속
-            let contactDB = FMDatabase(path: databasePath)
+            let memoDB = FMDatabase(path: databasePath)
             
-            if contactDB.open() {
-                let sql_stmt = "CREATE TABLE IF NOT EXISTS CONTACTS ( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, AGE INTEGER )"
-                if !contactDB.executeStatements(sql_stmt){
-                    print("Error : contactDB execute Fail, \(contactDB.lastError())")
+            if memoDB.open() {
+                let sql_stmt = "CREATE TABLE IF NOT EXISTS CONTACTS ( ID INTEGER PRIMARY KEY AUTOINCREMENT, CONTENT TEXT, DATE DATE('now'), TEMPT BOOL )"
+                if !memoDB.executeStatements(sql_stmt){
+                    print("Error : memoDB execute Fail, \(memoDB.lastError())")
                 }
-                contactDB.close()
+                memoDB.close()
                 
             } else {
-                print("Error : contactDB open Fail, \(contactDB.lastError())")
+                print("Error : memoDB open Fail, \(memoDB.lastError())")
             }
         } else {
-            print("contactDB is exist")
+            print("memoDB is exist")
         }
     }
     
@@ -55,34 +55,34 @@ class ViewController: UIViewController {
     }
     @IBAction func saveBtnClicked(_ sender: UIButton) {
         // DB접속
-        let contactDB = FMDatabase(path: databasePath)
-        if contactDB.open(){
+        let memoDB = FMDatabase(path: databasePath)
+        if memoDB.open(){
             print("[Save to DB Name : \(nameTextField.text!) Age : \(ageTextField.text!)")
             let insertSQL = "INSERT INTO CONTACTS (NAME, AGE) values ('\(nameTextField.text!)', '\(ageTextField.text!)')"
             print(insertSQL)
-            let result = contactDB.executeUpdate(insertSQL, withArgumentsIn: [])
+            let result = memoDB.executeUpdate(insertSQL, withArgumentsIn: [])
             if !result{
                 resultLabel.text = "Fail to add contact"
-                print("Error : contactDB add Fail, \(contactDB.lastError())")
+                print("Error : memoDB add Fail, \(memoDB.lastError())")
             } else {
                 resultLabel.text = "Success to add contact"
                 nameTextField.text = ""
                 ageTextField.text = ""
             }
         } else {
-            print("Error : contactDB open Fail, \(contactDB.lastError())")
+            print("Error : memoDB open Fail, \(memoDB.lastError())")
         }
     }
     
     @IBAction func findBtnClicked(_ sender: UIButton) {
         // DB접속
-        let contactDB = FMDatabase(path: databasePath)
-        if contactDB.open(){
+        let memoDB = FMDatabase(path: databasePath)
+        if memoDB.open(){
             print("[Find to DB Name : \(nameTextField.text!) Age : \(ageTextField.text!)")
             let selectSQL = "SELECT NAME, AGE FROM CONTACTS WHERE NAME = '\(nameTextField.text!)'"
             print(selectSQL)
             do {
-                let result = try contactDB.executeQuery(selectSQL, values: [])
+                let result = try memoDB.executeQuery(selectSQL, values: [])
                 if result.next(){
                     ageTextField.text = result.string(forColumn: "AGE")
                     resultLabel.text = "\(result.string(forColumn: "NAME")!) find!"
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
                 print("error")
             }
         } else {
-            print("Error : contactDB open Fail, \(contactDB.lastError())")
+            print("Error : memoDB open Fail, \(memoDB.lastError())")
         }
     }
 }

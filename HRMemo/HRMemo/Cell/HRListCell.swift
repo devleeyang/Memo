@@ -9,15 +9,20 @@
 import UIKit
 
 class HRListCell: UITableViewCell {
-
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+    }
+    
+    override func prepareForReuse() {
+        dateLabel.text = ""
+        contentLabel.text = ""
     }
     
 }
