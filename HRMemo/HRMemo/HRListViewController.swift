@@ -92,7 +92,7 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         let memoDB = FMDatabase(path: databasePath)
         
         if memoDB.open(){
-            let selectSQL = "SELECT * FROM MEMO ORDER BY DATE DESC"
+            let selectSQL = "SELECT * FROM MEMO"
             print(selectSQL)
             do {
                 let result = try memoDB.executeQuery(selectSQL, values: [])
@@ -124,10 +124,50 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         }
         if let date = memoList[indexPath.row]["DATE"] as? String {
             let memoDate = stringToDate(date)
-            cell.dateLabel.text = passedNumberOfDaysFromMemoDate(memoDate: memoDate)
+//            stringToDate(ㅇ)
+            let date = Date()
+            let test = date.timeIntervalSince1970 - memoDate.timeIntervalSince1970
+//            let test = date.timeIntervalSince(memoDate)
+            print("memoDae : \(memoDate) , date : \(date), test : \(test)")
+//            var dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//            let dateString1 = dateFormatter.string(from: date)
+//            let nowString = stringToDate(dateString1)
+            
+//            Date(from: Decoder())
+//            let calendar = Calendar.current
+//            let time=calendar.dateComponents([.hour,.minute,.second], from: Date())
+//
+//            let dateFormatters:DateFormatter = DateFormatter()
+//            dateFormatters.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//            dateFormatters.timeZone = TimeZone(secondsFromGMT: 9)
+//            dateFormatters.locale = Locale(identifier: "ko_KR")
+//            dateFormatters.locale = Locale.current
+//            let date: Date = Date(from: Decoder(timezone(9)))
+//            print("Current Date : \(date)")
+//            print("Format Date as you want : \(dateFormatters.string(from: date))")
+//            let currentTimeZone = getCurrentTimeZone()
+//            print("dateString :\(dateString) \t nowString :\(nowString)")
+            
+//            print(time)
 
         }
+
         return cell
+//        if (indexPath.row < 2) {
+//            let cell:THLabelCell = helloView.dequeueReusableCell(withIdentifier: "THLabelCell") as! THLabelCell
+//            cell.title.text = "#\(responseList[indexPath.row].number) : \(responseList[indexPath.row].title)"
+//            return cell
+//        } else if indexPath.row == 2 {
+//            let cell:THImageCell = helloView.dequeueReusableCell(withIdentifier: "THImageCell") as! THImageCell
+//            let url = URL(string: "https://s3.ap-northeast-2.amazonaws.com/hellobot-kr-test/image/main_logo.png")
+//            cell.hellImg.kf.setImage(with: url)
+//            return cell
+//        } else {
+//            let cell:THLabelCell = helloView.dequeueReusableCell(withIdentifier: "THLabelCell") as! THLabelCell
+//            cell.title.text = "#\(responseList[indexPath.row-1].number) : \(responseList[indexPath.row-1].title)"
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -170,54 +210,6 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    func passedNumberOfDaysFromMemoDate(memoDate:Date) -> String {
-    
-        /*
-         타임초를 비교했는데 하루보다 작으면 -> day를 비교후 day차가 발생하면 1일전, 아니면 시간으로 나타냄
-         시간은 초는 초 / 분/ 시간으로 변경
-         나머지 day는 day로 하고, 한달이상 차이 날 시... 달로 변경 달은 30일 기준
-         */
-        let subtract = Int(Date().timeIntervalSince1970) - Int(memoDate.timeIntervalSince1970)
-        let quotient = subtract/(60*60*24)
-        let cal = Calendar.current
- 
-        if (quotient == 0) {
-            let memoDay = cal.component(.day, from: memoDate)
-            let toDay = cal.component(.day, from: Date())
-            if (toDay - memoDay > 0) {
-                return "약 1일 전"
-            } else {
-                //                if (subtract/60*60)
-                let hour = subtract/(60*60)
-                if (hour > 0) {
-                    return "약 \(hour)시간 전"
-                } else {
-                    let min = subtract/60
-                    if (min > 0) {
-                        return "약 \(min)분 전"
-                    } else {
-                        if (subtract == 0) {
-                            return "방금 전"
-                        } else {
-                            return "약 \(subtract)초 전"
-                        }
-                    }
-                }
-            }
-        } else {
-            if (quotient < 30) {
-                return "약 \(quotient)일 전"
-            } else {
-                let month = subtract/(60*60*24*30)
-                if (month < 12) {
-                    return "약 \(month)달 전"
-                } else {
-                    let year = subtract/(60*60*24*30*12)
-                    return "약 \(year)년 전"
-                }
-            }
-        }
-    }
    /*
     func parseDate(questionDate: String) -> Date? {
         // parse "1900-00-00T12:34:56.0000Z" format
