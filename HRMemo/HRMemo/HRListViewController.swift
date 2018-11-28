@@ -16,6 +16,7 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         memoView.register(UINib(nibName: "HRListCell", bundle: nil), forCellReuseIdentifier: "HRListCell")
+        memoView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
         // Do any additional setup after loading the view, typically from a nib. // DB Check
         
         let fileMgr = FileManager.default
@@ -79,7 +80,7 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        let fileMgr = FileManager.default
+        memoList.removeAll()
         // 파일 찾기, 유저 홈 위치
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         // Document 경로
@@ -96,7 +97,6 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
             print(selectSQL)
             do {
                 let result = try memoDB.executeQuery(selectSQL, values: [])
-                memoList.removeAll()
                 while(result.next()) {
                     if let element = result.resultDictionary as? [String : Any] {
                         memoList.append(element)
@@ -138,6 +138,57 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        
+        let shareAction = UIContextualAction(style: .normal, title:  "공유", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            success(true)
+            
+        })
+        
+        return UISwipeActionsConfiguration(actions:[shareAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            success(true)
+            let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            // Document 경로
+            let docsDir = dirPath[0]
+            print(docsDir)
+            
+            // Document/contacts.db라는 경로(커스터마이징 db임)
+            self.databasePath = docsDir.appending("/memo.db")
+            
+            let memoDB = FMDatabase(path: self.databasePath)
+            
+            if memoDB.open(){
+                let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[indexPath.row]["ID"]!)"
+                print(deleteSQL)
+                do {
+                    let result = try memoDB.executeQuery(deleteSQL, values: [])
+                    while(result.next()) {
+                        if let element = result.resultDictionary as? [String : Any] {
+                            self.memoList.append(element)
+                        }
+                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
+                    }
+                    self.memoList.remove(at: indexPath.row)
+//                    self.memoView.reloadData()
+                } catch  {
+                    print("error")
+                }
+            } else {
+                print("Error : memoDB open Fail, \(memoDB.lastError())")
+            }
+            memoDB.close()
+        })
+        
+        return UISwipeActionsConfiguration(actions:[deleteAction])
+    }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
