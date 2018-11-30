@@ -143,15 +143,19 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         let shareAction = UIContextualAction(style: .normal, title:  "공유", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            
             success(true)
+            let text = "공유할 내용"
+            let textShare = [text]
+            let activityVC = UIActivityViewController(activityItems: textShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop]
+            self.present(activityVC, animated: true, completion: nil)
             
         })
         
         return UISwipeActionsConfiguration(actions:[shareAction])
     }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    /*
+    func tableView(_ tableView: UITableView,   indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             success(true)
@@ -159,7 +163,14 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
             // Document 경로
             let docsDir = dirPath[0]
             print(docsDir)
-            
+//            [tableView beginUpdates];
+//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//            [tableView endUpdates];
+            self.memoView.beginUpdates()
+//            self.memoView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic, with:  )
+            self.memoView.deleteRows(at: [indexPath], with: UITableView.R)
+            self.memoView.endUpdates()
+            /*
             // Document/contacts.db라는 경로(커스터마이징 db임)
             self.databasePath = docsDir.appending("/memo.db")
             
@@ -185,6 +196,68 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
                 print("Error : memoDB open Fail, \(memoDB.lastError())")
             }
             memoDB.close()
+             */
+        })
+        
+        return UISwipeActionsConfiguration(actions:[deleteAction])
+    }
+ 
+ */
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            // Document 경로
+            let docsDir = dirPath[0]
+            print(docsDir)
+            //            [tableView beginUpdates];
+            //            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            //            [tableView endUpdates]
+
+            self.databasePath = docsDir.appending("/memo.db")
+            let memoDB = FMDatabase(path: self.databasePath)
+
+            if memoDB.open(){
+                let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[indexPath.row]["ID"]!)"
+                print(deleteSQL)
+                
+                do {
+
+                    let result = try memoDB.executeQuery(deleteSQL, values: [])
+
+                    while(result.next()) {
+
+                        if let element = result.resultDictionary as? [String : Any] {
+
+                            self.memoList.append(element)
+
+                        }
+
+                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
+
+                    }
+
+                    self.memoList.remove(at: indexPath.row)
+                 
+                    self.memoView.reloadData()
+
+                } catch  {
+
+                    print("error")
+
+                }
+
+            } else {
+
+                print("Error : memoDB open Fail, \(memoDB.lastError())")
+
+            }
+
+            memoDB.close()
+
+
+            success(true)
+            
         })
         
         return UISwipeActionsConfiguration(actions:[deleteAction])
