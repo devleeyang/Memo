@@ -110,12 +110,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7mR-DU-N30">
-                                <rect key="frame" x="0.0" y="32" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="LhQ-3S-sue" id="DxZ-by-3ks"/>
-                                    <outlet property="delegate" destination="LhQ-3S-sue" id="tkg-n2-AHR"/>
-                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCc-0B-qjj">
                                 <rect key="frame" x="285" y="577" width="50" height="50"/>
@@ -124,9 +120,6 @@
                                     <constraint firstAttribute="width" constant="50" id="rF3-Yl-vMY"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="pressedWriteView:" destination="LhQ-3S-sue" eventType="touchUpInside" id="etl-Am-GYO"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.83921568629999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -156,9 +149,6 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="memoView" destination="7mR-DU-N30" id="qCR-wY-w54"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoE-RM-CFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,9 +194,6 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="LhQ-3S-sue" kind="relationship" relationship="rootViewController" id="Qmb-5v-d6z"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENC-HP-L2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,30 +7,57 @@
 //
 
 import UIKit
+import SnapKit
 
 class HRListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var memoView: UITableView!
-    var databasePath = String()
+    private var memoView = UITableView()
+    private let listId = "HRListCell"
+    private var databasePath = String()
     var memoList = Array<Dictionary<String, Any>>()
+    
+    private let addButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        button.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+//        label.textColor = .white
+//        label.font = UIFont.systemFont(ofSize: 21)
+//        label.textAlignment = .center
+//        label.text = "유저정보를 가져오는 중입니다.\n잠시만 기다려주시길 바랍니다."
+//        label.numberOfLines = 0
+        
+        return button
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        memoView.register(UINib(nibName: "HRListCell", bundle: nil), forCellReuseIdentifier: "HRListCell")
-        memoView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
-        // Do any additional setup after loading the view, typically from a nib. // DB Check
+        memoView = UITableView()
+        view.addSubview(memoView)
+        memoView.backgroundColor = UIColor(red:224.0/255.0, green:218.0/255.0, blue:245.0/255.0, alpha:1.0)
+        memoView.register(HRListCell.self, forCellReuseIdentifier: listId)
+        memoView.keyboardDismissMode = .onDrag
+        
+        memoView.delegate = self
+        memoView.dataSource = self
+
+        memoView.addSubview(addButton)
+        
+        memoView.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
+//        addButton.snp.makeConstraints {
+//              $0.leading.trailing.top.bottom.equalToSuperview().offset(10)
+//        }
+        
+        
         
         let fileMgr = FileManager.default
-        // 파일 찾기, 유저 홈 위치
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        // Document 경로
         let docsDir = dirPath[0]
         print(docsDir)
         
-        // Document/contacts.db라는 경로(커스터마이징 db임)
         databasePath = docsDir.appending("/memo.db")
-        
         let memoDB = FMDatabase(path: databasePath)
-        
         if !fileMgr.fileExists(atPath: databasePath) {
             // DB 접속
             if memoDB.open() {
@@ -118,7 +145,7 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:HRListCell = memoView.dequeueReusableCell(withIdentifier: "HRListCell") as! HRListCell
+        let cell:HRListCell = memoView.dequeueReusableCell(withIdentifier: listId, for: indexPath) as! HRListCell
         if let contentString = memoList[indexPath.row]["CONTENT"] as? String {
             cell.contentLabel.text = contentString
         }
@@ -140,8 +167,6 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        
         let shareAction = UIContextualAction(style: .normal, title:  "공유", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             success(true)
             let text = "공유할 내용"
