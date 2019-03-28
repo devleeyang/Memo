@@ -9,8 +9,7 @@
 import UIKit
 import SnapKit
 
-class HRListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
-    
+class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpdating {
     private var memoView = UITableView()
     private let listId = "HRListCell"
     private var databasePath = String()
@@ -36,8 +35,13 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         let searchBtn = UIButton()
         searchBtn.setImage(#imageLiteral(resourceName: "loupe"), for: .normal)
         searchBtn.addTarget(self, action: #selector(searchInputText), for: .touchUpInside)
-        let barButton = UIBarButtonItem(customView: searchBtn)
-        navigationItem.rightBarButtonItem = barButton
+        
+        let settingBtn = UIButton()
+        settingBtn.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
+        settingBtn.addTarget(self, action: #selector(pressedSetting), for: .touchUpInside)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBtn)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: settingBtn)
         navigationController?.navigationBar.backgroundColor = .clear
         
         memoView = UITableView()
@@ -114,103 +118,6 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         memoView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memoList.count > 0 ? memoList.count : 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:HRListCell = memoView.dequeueReusableCell(withIdentifier: listId, for: indexPath) as! HRListCell
-        if let contentString = memoList[indexPath.row]["CONTENT"] as? String {
-            cell.contentLabel.text = contentString
-        }
-        if let date = memoList[indexPath.row]["DATE"] as? String {
-            let memoDate = stringToDate(date)
-            cell.dateLabel.text = passedNumberOfDaysFromMemoDate(memoDate: memoDate)
-
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let writeVC = HRWriteViewController()
-        writeVC.memoData = memoList[indexPath.row]
-        navigationController?.pushViewController(writeVC, animated: true)
-    }
-    
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let shareAction = UIContextualAction(style: .normal, title:  "공유", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            success(true)
-            let text = "공유할 내용"
-            let textShare = [text]
-            let activityVC = UIActivityViewController(activityItems: textShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop]
-            self.present(activityVC, animated: true, completion: nil)
-            
-        })
-        
-        return UISwipeActionsConfiguration(actions:[shareAction])
-    }
- 
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            
-            let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            let docsDir = dirPath[0]
-            print(docsDir)
-
-            self.databasePath = docsDir.appending("/memo.db")
-            let memoDB = FMDatabase(path: self.databasePath)
-
-            if memoDB.open(){
-                let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[indexPath.row]["ID"]!)"
-                print(deleteSQL)
-                
-                do {
-
-                    let result = try memoDB.executeQuery(deleteSQL, values: [])
-
-                    while(result.next()) {
-
-                        if let element = result.resultDictionary as? [String : Any] {
-
-                            self.memoList.append(element)
-
-                        }
-
-                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
-
-                    }
-
-                    self.memoList.remove(at: indexPath.row)
-                 
-                    self.memoView.reloadData()
-
-                } catch  {
-
-                    print("error")
-
-                }
-
-            } else {
-
-                print("Error : memoDB open Fail, \(memoDB.lastError())")
-
-            }
-
-            memoDB.close()
-
-
-            success(true)
-            
-        })
-        
-        return UISwipeActionsConfiguration(actions:[deleteAction])
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
 
     @objc func pressedWriteView(_ sender: UIButton) {
         let writeVC = HRWriteViewController()
@@ -223,6 +130,11 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         searchController.searchBar.placeholder = "Search Candies"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    @objc func pressedSetting(_ sender: UIButton) {
+        let writeVC = HRWriteViewController()
+        navigationController?.pushViewController(writeVC, animated: true)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -243,9 +155,7 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func getCurrentTimeZone() -> Int{
-        
         return TimeZone.current.secondsFromGMT()
-        
     }
     
     func passedNumberOfDaysFromMemoDate(memoDate:Date) -> String {
@@ -296,24 +206,89 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
-   /*
-    func parseDate(questionDate: String) -> Date? {
-        // parse "1900-00-00T12:34:56.0000Z" format
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSxxx"
-        let date = dateFormatter.date(from: questionDate)
-        return date
+}
+
+extension HRListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memoList.count > 0 ? memoList.count : 0
     }
     
-    func getDateFormat() -> String? {
-        let date = parseDate(questionDate: updatedAt!)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
-        
-        return dateFormatter.string(from: date!)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:HRListCell = memoView.dequeueReusableCell(withIdentifier: listId, for: indexPath) as! HRListCell
+        if let contentString = memoList[indexPath.row]["CONTENT"] as? String {
+            cell.contentLabel.text = contentString
+        }
+        if let date = memoList[indexPath.row]["DATE"] as? String {
+            let memoDate = stringToDate(date)
+            cell.dateLabel.text = passedNumberOfDaysFromMemoDate(memoDate: memoDate)
+            
+        }
+        return cell
     }
-     */
+}
+
+extension HRListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let writeVC = HRWriteViewController()
+        writeVC.memoData = memoList[indexPath.row]
+        navigationController?.pushViewController(writeVC, animated: true)
+    }
     
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let shareAction = UIContextualAction(style: .normal, title:  "공유", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            success(true)
+            let text = "공유할 내용"
+            let textShare = [text]
+            let activityVC = UIActivityViewController(activityItems: textShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop]
+            self.present(activityVC, animated: true, completion: nil)
+            
+        })
+        
+        return UISwipeActionsConfiguration(actions:[shareAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let docsDir = dirPath[0]
+            print(docsDir)
+            
+            self.databasePath = docsDir.appending("/memo.db")
+            let memoDB = FMDatabase(path: self.databasePath)
+            
+            if memoDB.open(){
+                let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[indexPath.row]["ID"]!)"
+                print(deleteSQL)
+                
+                do {
+                    let result = try memoDB.executeQuery(deleteSQL, values: [])
+                    while(result.next()) {
+                        if let element = result.resultDictionary as? [String : Any] {
+                            self.memoList.append(element)
+                        }
+                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
+                    }
+                    
+                    self.memoList.remove(at: indexPath.row)
+                    self.memoView.reloadData()
+                } catch  {
+                    print("error")
+                }
+            } else {
+                print("Error : memoDB open Fail, \(memoDB.lastError())")
+            }
+            memoDB.close()
+            success(true)
+            
+        })
+        
+        return UISwipeActionsConfiguration(actions:[deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }

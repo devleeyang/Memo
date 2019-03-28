@@ -12,14 +12,6 @@ class HRWriteViewController: UIViewController {
     
     var memoData = Dictionary<String,Any>()
     var writeView: UITextView!
-//    var writeView: UITextView = {
-//        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        textView.textAlignment = NSTextAlignment.justified
-//        textView.textColor = UIColor.blue
-//        textView.backgroundColor = UIColor.lightGray
-//        return textView
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

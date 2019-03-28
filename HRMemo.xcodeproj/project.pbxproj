@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */; };
 		3E31B43122487A2C00841EB6 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; };
 		3E31B43222487A2C00841EB6 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRSettingViewController.swift; sourceTree = "<group>"; };
 		3E31B43022487A2C00841EB6 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		EE0DF29121A3F63200C4D754 /* HRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				EECC744621A2D17C00F17F3F /* Bridging-Header.h */,
 				EE20151C21A2C4A3006D9746 /* AppDelegate.swift */,
 				EE0DF29121A3F63200C4D754 /* HRListViewController.swift */,
+				3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */,
 				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
 				EE0DF29521A405BC00C4D754 /* Cell */,
 				3E3D9C6E224A040D000387FE /* Navibar */,
@@ -393,6 +396,7 @@
 				EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */,
 				EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */,
 				EECC746021A2D8C500F17F3F /* FMDatabaseAdditions.m in Sources */,
+				3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */,
 				EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */,
 				EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */,
 				EECC746321A2D8C500F17F3F /* FMDatabaseQueue.h in Sources */,
