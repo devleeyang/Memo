@@ -13,8 +13,6 @@
 		EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29121A3F63200C4D754 /* HRListViewController.swift */; };
 		EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */; };
 		EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29621A405EC00C4D754 /* HRListCell.swift */; };
-		EE0DF29921A405EC00C4D754 /* HRListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0DF29721A405EC00C4D754 /* HRListCell.xib */; };
-		EE20152221A2C4A3006D9746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152021A2C4A3006D9746 /* Main.storyboard */; };
 		EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE20152321A2C4A6006D9746 /* Assets.xcassets */; };
 		EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */; };
 		EE20153221A2C4A6006D9746 /* HRMemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153121A2C4A6006D9746 /* HRMemoTests.swift */; };
@@ -71,10 +69,8 @@
 		EE0DF29121A3F63200C4D754 /* HRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListViewController.swift; sourceTree = "<group>"; };
 		EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRWriteViewController.swift; sourceTree = "<group>"; };
 		EE0DF29621A405EC00C4D754 /* HRListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListCell.swift; sourceTree = "<group>"; };
-		EE0DF29721A405EC00C4D754 /* HRListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HRListCell.xib; sourceTree = "<group>"; };
 		EE20151921A2C4A3006D9746 /* HRMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HRMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20151C21A2C4A3006D9746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EE20152121A2C4A3006D9746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE20152321A2C4A6006D9746 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE20152621A2C4A6006D9746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE20152821A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				EE0DF29621A405EC00C4D754 /* HRListCell.swift */,
-				EE0DF29721A405EC00C4D754 /* HRListCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -176,7 +171,6 @@
 				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
 				EE0DF29521A405BC00C4D754 /* Cell */,
 				3E3D9C6E224A040D000387FE /* Navibar */,
-				EE20152021A2C4A3006D9746 /* Main.storyboard */,
 				EE20152321A2C4A6006D9746 /* Assets.xcassets */,
 				EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */,
 				EE20152821A2C4A6006D9746 /* Info.plist */,
@@ -347,9 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */,
-				EE0DF29921A405EC00C4D754 /* HRListCell.xib in Resources */,
 				EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */,
-				EE20152221A2C4A3006D9746 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,14 +438,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EE20152021A2C4A3006D9746 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE20152121A2C4A3006D9746 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
