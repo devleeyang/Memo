@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		3E31B43122487A2C00841EB6 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; };
 		3E31B43222487A2C00841EB6 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */; };
 		EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29121A3F63200C4D754 /* HRListViewController.swift */; };
 		EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */; };
 		EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29621A405EC00C4D754 /* HRListCell.swift */; };
 		EE0DF29921A405EC00C4D754 /* HRListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0DF29721A405EC00C4D754 /* HRListCell.xib */; };
-		EE20151F21A2C4A3006D9746 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20151E21A2C4A3006D9746 /* ViewController.swift */; };
 		EE20152221A2C4A3006D9746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152021A2C4A3006D9746 /* Main.storyboard */; };
 		EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE20152321A2C4A6006D9746 /* Assets.xcassets */; };
 		EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */; };
@@ -67,13 +67,13 @@
 
 /* Begin PBXFileReference section */
 		3E31B43022487A2C00841EB6 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		EE0DF29121A3F63200C4D754 /* HRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListViewController.swift; sourceTree = "<group>"; };
 		EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRWriteViewController.swift; sourceTree = "<group>"; };
 		EE0DF29621A405EC00C4D754 /* HRListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListCell.swift; sourceTree = "<group>"; };
 		EE0DF29721A405EC00C4D754 /* HRListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HRListCell.xib; sourceTree = "<group>"; };
 		EE20151921A2C4A3006D9746 /* HRMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HRMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20151C21A2C4A3006D9746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EE20151E21A2C4A3006D9746 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EE20152121A2C4A3006D9746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE20152321A2C4A6006D9746 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE20152621A2C4A6006D9746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E3D9C6E224A040D000387FE /* Navibar */ = {
+			isa = PBXGroup;
+			children = (
+				3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */,
+			);
+			path = Navibar;
+			sourceTree = "<group>";
+		};
 		EE0DF29521A405BC00C4D754 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +175,7 @@
 				EE0DF29121A3F63200C4D754 /* HRListViewController.swift */,
 				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
 				EE0DF29521A405BC00C4D754 /* Cell */,
-				EE20151E21A2C4A3006D9746 /* ViewController.swift */,
+				3E3D9C6E224A040D000387FE /* Navibar */,
 				EE20152021A2C4A3006D9746 /* Main.storyboard */,
 				EE20152321A2C4A6006D9746 /* Assets.xcassets */,
 				EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */,
@@ -399,10 +407,10 @@
 				EECC746421A2D8C500F17F3F /* FMDatabaseQueue.m in Sources */,
 				EECC746521A2D8C500F17F3F /* FMDB.h in Sources */,
 				EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */,
+				3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */,
 				EECC746721A2D8C500F17F3F /* FMResultSet.m in Sources */,
 				EECC745C21A2D88A00F17F3F /* AppDelegate.swift in Sources */,
 				EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */,
-				EE20151F21A2C4A3006D9746 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

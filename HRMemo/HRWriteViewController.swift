@@ -11,19 +11,46 @@ import UIKit
 class HRWriteViewController: UIViewController {
     
     var memoData = Dictionary<String,Any>()
-    @IBOutlet weak var writeView: UITextView!
+    var writeView: UITextView!
+//    var writeView: UITextView = {
+//        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+//        textView.textAlignment = NSTextAlignment.justified
+//        textView.textColor = UIColor.blue
+//        textView.backgroundColor = UIColor.lightGray
+//        return textView
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.backgroundColor = UIColor(red:224.0/255.0, green:218.0/255.0, blue:245.0/255.0, alpha:1.0)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(self.pressedSaveMemo))
+
+        writeView = UITextView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        writeView.textAlignment = NSTextAlignment.justified
+        writeView.textColor = .black
+        writeView.font = UIFont.systemFont(ofSize: 21)
+        writeView.backgroundColor = .white
+
+        view.addSubview(writeView)
+        
         if (!memoData.isEmpty) {
             self.writeView.text = memoData["CONTENT"] as? String
         }
-//        btn
-//        self.navigationItem.rightBarButtonItem
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        writeView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-20)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(20)
+        }
     }
 
     @objc func pressedSaveMemo() {
-        
         // 파일 찾기, 유저 홈 위치
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         

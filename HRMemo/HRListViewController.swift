@@ -9,47 +9,53 @@
 import UIKit
 import SnapKit
 
-class HRListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HRListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+    
     private var memoView = UITableView()
     private let listId = "HRListCell"
     private var databasePath = String()
+    private let searchController = UISearchController(searchResultsController: nil)
     var memoList = Array<Dictionary<String, Any>>()
     
-    private let addButton: UIButton = {
+    private let addBtn: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        button.setImage(#imageLiteral(resourceName: "search"), for: .normal)
-//        label.textColor = .white
-//        label.font = UIFont.systemFont(ofSize: 21)
-//        label.textAlignment = .center
-//        label.text = "유저정보를 가져오는 중입니다.\n잠시만 기다려주시길 바랍니다."
-//        label.numberOfLines = 0
+        button.setTitle("+", for: .normal)
+        button.setTitle("+", for: .selected)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 29)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.white, for: .selected)
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = button.bounds.size.width / 2
+        button.addTarget(self, action: #selector(pressedWriteView), for: .touchUpInside)
         
         return button
     }()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let searchBtn = UIButton()
+        searchBtn.setImage(#imageLiteral(resourceName: "loupe"), for: .normal)
+        searchBtn.addTarget(self, action: #selector(searchInputText), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: searchBtn)
+        navigationItem.rightBarButtonItem = barButton
+        navigationController?.navigationBar.backgroundColor = .clear
+        
         memoView = UITableView()
         view.addSubview(memoView)
+        view.addSubview(addBtn)
         memoView.backgroundColor = UIColor(red:224.0/255.0, green:218.0/255.0, blue:245.0/255.0, alpha:1.0)
         memoView.register(HRListCell.self, forCellReuseIdentifier: listId)
         memoView.keyboardDismissMode = .onDrag
-        
         memoView.delegate = self
         memoView.dataSource = self
-
-        memoView.addSubview(addButton)
-        
         memoView.snp.makeConstraints {
             $0.leading.trailing.top.bottom.equalToSuperview()
         }
         
-//        addButton.snp.makeConstraints {
-//              $0.leading.trailing.top.bottom.equalToSuperview().offset(10)
-//        }
-        
-        
+        addBtn.snp.makeConstraints {
+            $0.trailing.bottom.equalToSuperview().offset(-30)
+            $0.size.width.height.equalTo(50)
+        }
         
         let fileMgr = FileManager.default
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -59,7 +65,6 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         databasePath = docsDir.appending("/memo.db")
         let memoDB = FMDatabase(path: databasePath)
         if !fileMgr.fileExists(atPath: databasePath) {
-            // DB 접속
             if memoDB.open() {
                 let sql_stmt = "CREATE TABLE IF NOT EXISTS MEMO ( ID INTEGER PRIMARY KEY AUTOINCREMENT, CONTENT TEXT, DATE DATETIME, TEMPT BOOL DEFAULT FALSE )"
                 if !memoDB.executeStatements(sql_stmt){
@@ -72,34 +77,6 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
             }
         } else {
             print("memoDB is exist")
-            /*
-            if memoDB.open(){
-                let insertSQL = "INSERT INTO MEMO (CONTENT, DATE, TEMPT) values ('우주', DATETIME('now', 'localtime'), FALSE)"
-                print(insertSQL)
-                let result = memoDB.executeUpdate(insertSQL, withArgumentsIn: [])
-                if !result{
-                    print("Error : memoDB add Fail, \(memoDB.lastError())")
-                } else {
-                }
-            } else {
-                print("Error : memoDB open Fail, \(memoDB.lastError())")
-            }
-*/
-            
-            /*
-            if memoDB.open(){
-                let insertSQL = "DELETE FROM MEMO WHERE ID = 2 "
-                print(insertSQL)
-                let result = memoDB.executeUpdate(insertSQL, withArgumentsIn: [])
-                if !result{
-                    print("Error : memoDB add Fail, \(memoDB.lastError())")
-                } else {
-                }
-            } else {
-                print("Error : memoDB open Fail, \(memoDB.lastError())")
-            }
- */
-            
         }
         memoDB.close()
         
@@ -108,13 +85,10 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         memoList.removeAll()
-        // 파일 찾기, 유저 홈 위치
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        // Document 경로
         let docsDir = dirPath[0]
         print(docsDir)
         
-        // Document/contacts.db라는 경로(커스터마이징 db임)
         databasePath = docsDir.appending("/memo.db")
         
         let memoDB = FMDatabase(path: databasePath)
@@ -158,11 +132,9 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let writeVC = storyboard.instantiateViewController(withIdentifier:"HRWriteViewController" ) as? HRWriteViewController {
-            writeVC.memoData = memoList[indexPath.row]
-            self.navigationController?.pushViewController(writeVC, animated: true)
-        }
+        let writeVC = HRWriteViewController()
+        writeVC.memoData = memoList[indexPath.row]
+        navigationController?.pushViewController(writeVC, animated: true)
     }
     
     
@@ -179,65 +151,13 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         
         return UISwipeActionsConfiguration(actions:[shareAction])
     }
-    /*
-    func tableView(_ tableView: UITableView,   indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-
-        let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            success(true)
-            let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            // Document 경로
-            let docsDir = dirPath[0]
-            print(docsDir)
-//            [tableView beginUpdates];
-//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//            [tableView endUpdates];
-            self.memoView.beginUpdates()
-//            self.memoView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic, with:  )
-            self.memoView.deleteRows(at: [indexPath], with: UITableView.R)
-            self.memoView.endUpdates()
-            /*
-            // Document/contacts.db라는 경로(커스터마이징 db임)
-            self.databasePath = docsDir.appending("/memo.db")
-            
-            let memoDB = FMDatabase(path: self.databasePath)
-            
-            if memoDB.open(){
-                let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[indexPath.row]["ID"]!)"
-                print(deleteSQL)
-                do {
-                    let result = try memoDB.executeQuery(deleteSQL, values: [])
-                    while(result.next()) {
-                        if let element = result.resultDictionary as? [String : Any] {
-                            self.memoList.append(element)
-                        }
-                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
-                    }
-                    self.memoList.remove(at: indexPath.row)
-//                    self.memoView.reloadData()
-                } catch  {
-                    print("error")
-                }
-            } else {
-                print("Error : memoDB open Fail, \(memoDB.lastError())")
-            }
-            memoDB.close()
-             */
-        })
-        
-        return UISwipeActionsConfiguration(actions:[deleteAction])
-    }
  
- */
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
             let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            // Document 경로
             let docsDir = dirPath[0]
             print(docsDir)
-            //            [tableView beginUpdates];
-            //            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            //            [tableView endUpdates]
 
             self.databasePath = docsDir.appending("/memo.db")
             let memoDB = FMDatabase(path: self.databasePath)
@@ -292,18 +212,27 @@ class HRListViewController: UIViewController, UITableViewDataSource, UITableView
         return UITableView.automaticDimension
     }
 
-    @IBAction func pressedWriteView(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let writeVC = storyboard.instantiateViewController(withIdentifier:"HRWriteViewController" ) as? HRWriteViewController {
-            self.navigationController?.pushViewController(writeVC, animated: true)
-        }
+    @objc func pressedWriteView(_ sender: UIButton) {
+        let writeVC = HRWriteViewController()
+        navigationController?.pushViewController(writeVC, animated: true)
+    }
+    
+    @objc func searchInputText(_ sender: UIButton) {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Candies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
     
     func stringToDate(_ str: String)->Date{
         let formatter = DateFormatter()
         formatter.dateFormat="yyyy-MM-dd HH:mm:ss"
         formatter.timeZone = TimeZone(secondsFromGMT: getCurrentTimeZone()/3600)
-//        formatter.locale = Locale(identifier: "ko_KR")
         return formatter.date(from: str)!
     }
     
