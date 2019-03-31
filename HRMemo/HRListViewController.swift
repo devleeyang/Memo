@@ -241,7 +241,6 @@ extension HRListViewController: UITableViewDelegate {
             let text = "공유할 내용"
             let textShare = [text]
             let activityVC = UIActivityViewController(activityItems: textShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.message]
             self.present(activityVC, animated: true, completion: nil)
             
         })
