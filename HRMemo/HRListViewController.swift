@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpdating {
+class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
     private var memoView = UITableView()
     private let listId = "HRListCell"
     private var databasePath = String()
@@ -32,6 +32,7 @@ class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResul
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let searchBtn = UIButton()
         searchBtn.setImage(#imageLiteral(resourceName: "loupe"), for: .normal)
         searchBtn.addTarget(self, action: #selector(searchInputText), for: .touchUpInside)
@@ -53,7 +54,8 @@ class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResul
         memoView.delegate = self
         memoView.dataSource = self
         memoView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(navi.snp.bottom)
         }
         
         addBtn.snp.makeConstraints {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomNavigationBar: UIView {
     let leftButton: UIButton = UIButton()
@@ -24,23 +25,28 @@ class CustomNavigationBar: UIView {
     
     private func initialize() {
         clipsToBounds = true
+        self.backgroundColor = .green
         
         addSubview(leftButton)
         addSubview(rightButton)
         
-        leftButton.setImage(#imageLiteral(resourceName: "ic_arrow_back_white_22px"), for: .normal)
+        leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        initButtons()
+    }
+    func initButtons(){
+        leftButton.translatesAutoresizingMaskIntoConstraints = false
+        rightButton.translatesAutoresizingMaskIntoConstraints = false
         
-//        rightButton.snp.makeConstraints {
-//            $0.centerY.equalTo(Constants.Layout.CustomNavigationBar.buttonCenterY)
-//        }
-//
-//        leftButton.snp.makeConstraints {
-//            $0.centerY.equalTo(Constants.Layout.CustomNavigationBar.buttonCenterY)
-//            $0.leading.equalToSuperview().offset(Spacing.px2)
-//        }
-//
-//        snp.makeConstraints {
-//            $0.height.equalTo(Constants.Layout.CustomNavigationBar.height)
-//        }
+        leftButton.snp.makeConstraints {
+            $0.top.bottom.leading.equalToSuperview()
+            $0.width.equalTo(50)
+        }
+        
+        rightButton.snp.makeConstraints {
+            $0.top.bottom.trailing.equalToSuperview()
+            $0.width.equalTo(50)
+        }
+        
+        
     }
 }
