@@ -17,10 +17,11 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         initNaviBar()
+        navi.leftButton.addTarget(self, action: #selector(pressLeftButton(_:)), for: .touchUpInside)
+        navi.rightButton.addTarget(self, action: #selector(pressRightButton(_:)), for: .touchUpInside)
     }
     
     func initNaviBar() {
-        
         view.addSubview(top)
         view.addSubview(navi)
         
@@ -35,5 +36,13 @@ class BaseViewController: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(44)
         }
+    }
+    
+    @objc func pressLeftButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func pressRightButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
 }

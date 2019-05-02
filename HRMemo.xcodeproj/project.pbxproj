@@ -10,9 +10,10 @@
 		3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */; };
 		3E235EB4224C731800AE221F /* HRContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB3224C731800AE221F /* HRContentCell.swift */; };
 		3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB5224CB23D00AE221F /* HRMailViewController.swift */; };
-		3E31B43122487A2C00841EB6 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; };
-		3E31B43222487A2C00841EB6 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */; };
+		CDD5C454227ABEFB00062C60 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; };
+		CDD5C455227ABEFB00062C60 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CDD5C458227AC2AB00062C60 /* CustomSearchNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */; };
 		EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29121A3F63200C4D754 /* HRListViewController.swift */; };
 		EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */; };
 		EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29621A405EC00C4D754 /* HRListCell.swift */; };
@@ -55,13 +56,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3E31B43322487A2C00841EB6 /* Embed Frameworks */ = {
+		CDD5C456227ABEFB00062C60 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3E31B43222487A2C00841EB6 /* SnapKit.framework in Embed Frameworks */,
+				CDD5C455227ABEFB00062C60 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +75,7 @@
 		3E235EB5224CB23D00AE221F /* HRMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMailViewController.swift; sourceTree = "<group>"; };
 		3E31B43022487A2C00841EB6 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchNavigationBar.swift; sourceTree = "<group>"; };
 		EE0DF29121A3F63200C4D754 /* HRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListViewController.swift; sourceTree = "<group>"; };
 		EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRWriteViewController.swift; sourceTree = "<group>"; };
 		EE0DF29621A405EC00C4D754 /* HRListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListCell.swift; sourceTree = "<group>"; };
@@ -113,7 +115,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EECC744221A2D02500F17F3F /* libsqlite3.tbd in Frameworks */,
-				3E31B43122487A2C00841EB6 /* SnapKit.framework in Frameworks */,
+				CDD5C454227ABEFB00062C60 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +141,7 @@
 			children = (
 				3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */,
 				EE50C2D3225263C100422391 /* CustomTopView.swift */,
+				CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */,
 			);
 			path = Navibar;
 			sourceTree = "<group>";
@@ -260,7 +263,7 @@
 				EE20151621A2C4A3006D9746 /* Frameworks */,
 				EE20151721A2C4A3006D9746 /* Resources */,
 				3E31B42F2248798A00841EB6 /* ShellScript */,
-				3E31B43322487A2C00841EB6 /* Embed Frameworks */,
+				CDD5C456227ABEFB00062C60 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -414,6 +417,7 @@
 				EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */,
 				EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */,
 				3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */,
+				CDD5C458227AC2AB00062C60 /* CustomSearchNavigationBar.swift in Sources */,
 				EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */,
 				EECC746321A2D8C500F17F3F /* FMDatabaseQueue.h in Sources */,
 				EECC746421A2D8C500F17F3F /* FMDatabaseQueue.m in Sources */,
@@ -590,8 +594,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GQ2YK62N76;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -603,7 +607,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = memo_dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -614,9 +618,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GQ2YK62N76;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -628,7 +632,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = memo_store;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

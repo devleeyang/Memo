@@ -1,17 +1,18 @@
 //
-//  CustomNavigationBar.swift
+//  CustomSearchNavigationBar.swift
 //  HRMemo
 //
-//  Created by 양혜리 on 26/03/2019.
+//  Created by huraypositive on 02/05/2019.
 //  Copyright © 2019 양혜리. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-class CustomNavigationBar: UIView {
-    let leftButton: UIButton = UIButton()
-    let rightButton: UIButton = UIButton()
+class CustomSearchNavigationBar: UIView {
+    lazy var leftButton: UIButton = UIButton()
+    lazy var rightButton: UIButton = UIButton()
+    lazy var textField: UITextField = UITextField()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +32,8 @@ class CustomNavigationBar: UIView {
         addSubview(rightButton)
         
         leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        rightButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
+        
         initButtons()
     }
     
@@ -47,7 +50,5 @@ class CustomNavigationBar: UIView {
             $0.top.bottom.trailing.equalToSuperview()
             $0.width.equalTo(50)
         }
-        
-        
     }
 }

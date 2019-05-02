@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class HRSettingViewController: UIViewController {
+class HRSettingViewController: BaseViewController {
     private var settingView = UITableView()
     private let contentId = "HRContentCell"
     override func viewDidLoad() {
@@ -21,6 +21,8 @@ class HRSettingViewController: UIViewController {
         }
         settingView.delegate = self
         settingView.dataSource = self
+        
+        navi.leftButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
     }
 }
 

@@ -53,6 +53,7 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         memoView.keyboardDismissMode = .onDrag
         memoView.delegate = self
         memoView.dataSource = self
+        
         memoView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(navi.snp.bottom)
@@ -120,7 +121,11 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         memoView.reloadData()
     }
     
-
+    override func pressLeftButton(_ sender: UIButton) {
+        let settingVC = HRSettingViewController()
+        navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
     @objc func pressedWriteView(_ sender: UIButton) {
         let writeVC = HRWriteViewController()
         navigationController?.pushViewController(writeVC, animated: true)
