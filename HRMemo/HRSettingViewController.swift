@@ -17,7 +17,8 @@ class HRSettingViewController: BaseViewController {
         view.addSubview(settingView)
         settingView.register(HRContentCell.self, forCellReuseIdentifier: contentId)
         settingView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(navi.snp.bottom)
         }
         settingView.delegate = self
         settingView.dataSource = self

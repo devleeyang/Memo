@@ -33,16 +33,6 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let searchBtn = UIButton()
-        searchBtn.setImage(#imageLiteral(resourceName: "loupe"), for: .normal)
-        searchBtn.addTarget(self, action: #selector(searchInputText), for: .touchUpInside)
-        
-        let settingBtn = UIButton()
-        settingBtn.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
-        settingBtn.addTarget(self, action: #selector(pressedSetting), for: .touchUpInside)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBtn)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: settingBtn)
         navigationController?.navigationBar.backgroundColor = .clear
         
         memoView = UITableView()
