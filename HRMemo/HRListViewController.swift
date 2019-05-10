@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 
 class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
-    private var memoView = UITableView()
+    private lazy var memoView = UITableView()
     private let listId = "HRListCell"
     private var databasePath = String()
     private let searchController = UISearchController(searchResultsController: nil)
     var memoList = Array<Dictionary<String, Any>>()
     
-    private let addBtn: UIButton = {
+    private lazy var addBtn: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         button.setTitle("+", for: .normal)
         button.setTitle("+", for: .selected)
@@ -34,6 +34,8 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         super.viewDidLoad()
         
         navigationController?.navigationBar.backgroundColor = .clear
+        navi.leftButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
+        navi.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
         
         memoView = UITableView()
         view.addSubview(memoView)
@@ -114,6 +116,10 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     override func pressLeftButton(_ sender: UIButton) {
         let settingVC = HRSettingViewController()
         navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
+    override func pressRightButton(_ sender: UIButton) {
+        
     }
     
     @objc func pressedWriteView(_ sender: UIButton) {

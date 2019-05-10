@@ -10,8 +10,11 @@ import UIKit
 import SnapKit
 
 class CustomNavigationBar: UIView {
-    let leftButton: UIButton = UIButton()
-    let rightButton: UIButton = UIButton()
+    lazy var leftButton: UIButton = UIButton()
+    lazy var rightButton: UIButton = UIButton()
+    lazy var scrollView: UIScrollView = UIScrollView()
+    lazy var topBackView: UIView = UIView()
+    lazy var bottomBackView: UIView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,16 +30,45 @@ class CustomNavigationBar: UIView {
         clipsToBounds = true
         self.backgroundColor = .green
         
-        addSubview(leftButton)
-        addSubview(rightButton)
+   
+        addSubview(scrollView)
+        scrollView.addSubview(topBackView)
+        scrollView.addSubview(bottomBackView)
         
-        leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        topBackView.addSubview(leftButton)
+        topBackView.addSubview(rightButton)
+        
+        initViews()
         initButtons()
+    }
+    
+    func initViews() {
+        scrollView.backgroundColor = .blue
+        topBackView.backgroundColor = .brown
+        bottomBackView.backgroundColor = .yellow
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    
+        topBackView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+//            $0.bottom.equalTo(bottomBackView.snp.top)
+            $0.height.equalTo(50)
+        }
+    
+        bottomBackView.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+//            $0.top.equalTo(topBackView.snp.bottom)
+            $0.height.equalTo(50)
+        }
     }
     
     func initButtons(){
         leftButton.translatesAutoresizingMaskIntoConstraints = false
         rightButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
         
         leftButton.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
