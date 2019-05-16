@@ -48,7 +48,8 @@ class CustomNavigationBar: UIView {
         bottomBackView.backgroundColor = .yellow
         
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().priority(.high)
+            $0.height.equalTo(self.snp.height).priority(.low)
         }
     
         topBackView.snp.makeConstraints {
@@ -57,11 +58,11 @@ class CustomNavigationBar: UIView {
             $0.height.equalTo(50)
         }
     
-        bottomBackView.snp.makeConstraints {
-            $0.bottom.leading.trailing.equalToSuperview()
-//            $0.top.equalTo(topBackView.snp.bottom)
-            $0.height.equalTo(50)
-        }
+//        bottomBackView.snp.makeConstraints {
+//            $0.bottom.leading.trailing.equalToSuperview()
+////            $0.top.equalTo(topBackView.snp.bottom)
+//            $0.height.equalTo(50)
+//        }
     }
     
     func initButtons(){
