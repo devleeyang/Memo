@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HRWriteViewController: UIViewController {
+class HRWriteViewController: BaseViewController {
     
     var memoData = Dictionary<String,Any>()
     var writeView: UITextView!
@@ -29,19 +29,18 @@ class HRWriteViewController: UIViewController {
         if (!memoData.isEmpty) {
             self.writeView.text = memoData["CONTENT"] as? String
         }
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
         
         writeView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(20)
+            $0.top.equalTo(navi.snp.bottom).offset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-20)
             $0.trailing.equalToSuperview().offset(-20)
             $0.leading.equalToSuperview().offset(20)
         }
+        
+        navi.leftButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+        navi.rightButton.isHidden = true
     }
-
+    
     @objc func pressedSaveMemo() {
         // 파일 찾기, 유저 홈 위치
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)

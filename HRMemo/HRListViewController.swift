@@ -9,14 +9,14 @@
 import UIKit
 import SnapKit
 
-class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpdating {
-    private var memoView = UITableView()
+class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
+    private lazy var memoView = UITableView()
     private let listId = "HRListCell"
     private var databasePath = String()
     private let searchController = UISearchController(searchResultsController: nil)
     var memoList = Array<Dictionary<String, Any>>()
     
-    private let addBtn: UIButton = {
+    private lazy var addBtn: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         button.setTitle("+", for: .normal)
         button.setTitle("+", for: .selected)
@@ -32,17 +32,10 @@ class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResul
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let searchBtn = UIButton()
-        searchBtn.setImage(#imageLiteral(resourceName: "loupe"), for: .normal)
-        searchBtn.addTarget(self, action: #selector(searchInputText), for: .touchUpInside)
         
-        let settingBtn = UIButton()
-        settingBtn.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
-        settingBtn.addTarget(self, action: #selector(pressedSetting), for: .touchUpInside)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBtn)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: settingBtn)
         navigationController?.navigationBar.backgroundColor = .clear
+        navi.leftButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
+        navi.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
         
         memoView = UITableView()
         view.addSubview(memoView)
@@ -52,8 +45,10 @@ class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResul
         memoView.keyboardDismissMode = .onDrag
         memoView.delegate = self
         memoView.dataSource = self
+        
         memoView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(navi.snp.bottom)
         }
         
         addBtn.snp.makeConstraints {
@@ -118,7 +113,15 @@ class HRListViewController: UIViewController, UISearchBarDelegate, UISearchResul
         memoView.reloadData()
     }
     
-
+    override func pressLeftButton(_ sender: UIButton) {
+        let settingVC = HRSettingViewController()
+        navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
+    override func pressRightButton(_ sender: UIButton) {
+        
+    }
+    
     @objc func pressedWriteView(_ sender: UIButton) {
         let writeVC = HRWriteViewController()
         navigationController?.pushViewController(writeVC, animated: true)
