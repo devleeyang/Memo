@@ -23,6 +23,8 @@
 		EE20153D21A2C4A6006D9746 /* HRMemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */; };
 		EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D1225262B200422391 /* BaseViewController.swift */; };
 		EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D3225263C100422391 /* CustomTopView.swift */; };
+		EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */; };
+		EE7C1CBC22D86D4900810AE8 /* NavigationBarScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */; };
 		EECC744221A2D02500F17F3F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EECC744121A2D02500F17F3F /* libsqlite3.tbd */; };
 		EECC745C21A2D88A00F17F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20151C21A2C4A3006D9746 /* AppDelegate.swift */; };
 		EECC745D21A2D8C500F17F3F /* FMDatabase.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744C21A2D7A100F17F3F /* FMDatabase.h */; };
@@ -92,6 +94,8 @@
 		EE20153E21A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE50C2D1225262B200422391 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EE50C2D3225263C100422391 /* CustomTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopView.swift; sourceTree = "<group>"; };
+		EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
+		EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarScroll.swift; sourceTree = "<group>"; };
 		EECC743F21A2CFEA00F17F3F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		EECC744121A2D02500F17F3F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EECC744621A2D17C00F17F3F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -189,10 +193,12 @@
 				EE50C2D1225262B200422391 /* BaseViewController.swift */,
 				EE0DF29521A405BC00C4D754 /* Cell */,
 				3E3D9C6E224A040D000387FE /* Navibar */,
+				EE79E8C6234EFE6800C28753 /* Extension */,
 				EE20152321A2C4A6006D9746 /* Assets.xcassets */,
 				EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */,
 				EE20152821A2C4A6006D9746 /* Info.plist */,
 				EECC744321A2D0E400F17F3F /* Libs */,
+				EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */,
 			);
 			path = HRMemo;
 			sourceTree = "<group>";
@@ -213,6 +219,14 @@
 				EE20153E21A2C4A6006D9746 /* Info.plist */,
 			);
 			path = HRMemoUITests;
+			sourceTree = "<group>";
+		};
+		EE79E8C6234EFE6800C28753 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		EECC743E21A2CFEA00F17F3F /* Frameworks */ = {
@@ -322,13 +336,16 @@
 				TargetAttributes = {
 					EE20151821A2C4A3006D9746 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					EE20152C21A2C4A6006D9746 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = EE20151821A2C4A3006D9746;
 					};
 					EE20153721A2C4A6006D9746 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = EE20151821A2C4A3006D9746;
 					};
 				};
@@ -412,10 +429,12 @@
 				EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */,
 				EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */,
 				3E235EB4224C731800AE221F /* HRContentCell.swift in Sources */,
+				EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */,
 				EECC746021A2D8C500F17F3F /* FMDatabaseAdditions.m in Sources */,
 				3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */,
 				EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */,
 				EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */,
+				EE7C1CBC22D86D4900810AE8 /* NavigationBarScroll.swift in Sources */,
 				3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */,
 				CDD5C458227AC2AB00062C60 /* CustomSearchNavigationBar.swift in Sources */,
 				EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */,
@@ -609,7 +628,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -634,7 +653,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -653,7 +672,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HRMemo.app/HRMemo";
 			};
@@ -673,7 +692,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HRMemo.app/HRMemo";
 			};
@@ -692,7 +711,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HRMemo;
 			};
@@ -711,7 +730,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HRMemo;
 			};

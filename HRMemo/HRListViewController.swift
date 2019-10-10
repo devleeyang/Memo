@@ -16,7 +16,7 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     private let searchController = UISearchController(searchResultsController: nil)
     var memoList = Array<Dictionary<String, Any>>()
     
-    private lazy var addBtn: UIButton = {
+    private lazy var addButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         button.setTitle("+", for: .normal)
         button.setTitle("+", for: .selected)
@@ -36,10 +36,11 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         navigationController?.navigationBar.backgroundColor = .clear
         navi.leftButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
         navi.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        navi.bottomRightButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
+        navi.scrollView.isScrollEnabled = false
         
-        memoView = UITableView()
         view.addSubview(memoView)
-        view.addSubview(addBtn)
+        view.addSubview(addButton)
         memoView.backgroundColor = UIColor(red:224.0/255.0, green:218.0/255.0, blue:245.0/255.0, alpha:1.0)
         memoView.register(HRListCell.self, forCellReuseIdentifier: listId)
         memoView.keyboardDismissMode = .onDrag
@@ -51,7 +52,7 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
             $0.top.equalTo(navi.snp.bottom)
         }
         
-        addBtn.snp.makeConstraints {
+        addButton.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().offset(-30)
             $0.size.width.height.equalTo(50)
         }
@@ -119,7 +120,7 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     }
     
     override func pressRightButton(_ sender: UIButton) {
-        
+        navi.scrollView.scrollToBottom()
     }
     
     @objc func pressedWriteView(_ sender: UIButton) {

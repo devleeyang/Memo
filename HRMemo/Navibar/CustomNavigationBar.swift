@@ -12,7 +12,9 @@ import SnapKit
 class CustomNavigationBar: UIView {
     lazy var leftButton: UIButton = UIButton()
     lazy var rightButton: UIButton = UIButton()
+    lazy var bottomRightButton: UIButton = UIButton()
     lazy var scrollView: UIScrollView = UIScrollView()
+    lazy var scrollContentView: UIView = UIView()
     lazy var topBackView: UIView = UIView()
     lazy var bottomBackView: UIView = UIView()
     
@@ -28,15 +30,17 @@ class CustomNavigationBar: UIView {
     
     private func initialize() {
         clipsToBounds = true
-        self.backgroundColor = .green
-        
-   
+        backgroundColor = .green
+        scrollContentView.backgroundColor = .gray
         addSubview(scrollView)
-        scrollView.addSubview(topBackView)
-        scrollView.addSubview(bottomBackView)
+        scrollView.addSubview(scrollContentView)
+        scrollContentView.addSubview(topBackView)
+        scrollContentView.addSubview(bottomBackView)
         
         topBackView.addSubview(leftButton)
         topBackView.addSubview(rightButton)
+        
+        bottomBackView.addSubview(bottomRightButton)
         
         initViews()
         initButtons()
@@ -48,29 +52,33 @@ class CustomNavigationBar: UIView {
         bottomBackView.backgroundColor = .yellow
         
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview().priority(.high)
-            $0.height.equalTo(self.snp.height).priority(.low)
+            $0.edges.equalToSuperview()
+            $0.height.equalTo(scrollContentView.snp.height).priority(.low)
         }
-    
+
+        scrollContentView.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.centerX.equalToSuperview()
+            $0.height.equalTo(100.0)
+        }
+
         topBackView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-//            $0.bottom.equalTo(bottomBackView.snp.top)
-            $0.height.equalTo(50)
+            $0.leading.top.trailing.equalToSuperview()
+            $0.height.equalTo(50.0)
         }
-    
-//        bottomBackView.snp.makeConstraints {
-//            $0.bottom.leading.trailing.equalToSuperview()
-////            $0.top.equalTo(topBackView.snp.bottom)
-//            $0.height.equalTo(50)
-//        }
+        
+        bottomBackView.snp.makeConstraints {
+            $0.leading.bottom.trailing.equalToSuperview()
+            $0.height.equalTo(50.0)
+            $0.top.equalTo(topBackView.snp.bottom)
+        }
+        
+        scrollView.contentSize = CGSize(width: self.frame.width, height: 100)
+        scrollView.setNeedsLayout()
     }
     
-    func initButtons(){
-        leftButton.translatesAutoresizingMaskIntoConstraints = false
-        rightButton.translatesAutoresizingMaskIntoConstraints = false
+    func initButtons() {
         
         leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
-        
         leftButton.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
             $0.width.equalTo(50)
@@ -81,6 +89,9 @@ class CustomNavigationBar: UIView {
             $0.width.equalTo(50)
         }
         
-        
+        bottomRightButton.snp.makeConstraints {
+            $0.top.bottom.trailing.equalToSuperview()
+            $0.width.equalTo(50)
+        }
     }
 }
