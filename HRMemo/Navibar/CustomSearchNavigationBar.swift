@@ -26,7 +26,7 @@ class CustomSearchNavigationBar: UIView {
     
     private func initialize() {
         clipsToBounds = true
-        self.backgroundColor = .green
+        backgroundColor = .green
         
         addSubview(leftButton)
         addSubview(rightButton)
@@ -38,9 +38,6 @@ class CustomSearchNavigationBar: UIView {
     }
     
     func initButtons(){
-        leftButton.translatesAutoresizingMaskIntoConstraints = false
-        rightButton.translatesAutoresizingMaskIntoConstraints = false
-        
         leftButton.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
             $0.width.equalTo(50)

@@ -19,6 +19,7 @@ class BaseViewController: UIViewController {
         initNaviBar()
         navi.leftButton.addTarget(self, action: #selector(pressLeftButton(_:)), for: .touchUpInside)
         navi.rightButton.addTarget(self, action: #selector(pressRightButton(_:)), for: .touchUpInside)
+        navi.bottomRightButton.addTarget(self, action: #selector(pressBottomRightButton(_:)), for: .touchUpInside)
     }
     
     func initNaviBar() {
@@ -44,5 +45,9 @@ class BaseViewController: UIViewController {
     
     @objc func pressRightButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func pressBottomRightButton(_ sender: UIButton) {
+        navi.scrollView.scrollToTop()
     }
 }

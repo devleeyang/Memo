@@ -36,6 +36,8 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         navigationController?.navigationBar.backgroundColor = .clear
         navi.leftButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
         navi.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        navi.bottomRightButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
+        navi.scrollView.isScrollEnabled = false
         
         view.addSubview(memoView)
         view.addSubview(addButton)
@@ -118,7 +120,7 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     }
     
     override func pressRightButton(_ sender: UIButton) {
-        
+        navi.scrollView.scrollToBottom()
     }
     
     @objc func pressedWriteView(_ sender: UIButton) {
