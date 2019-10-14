@@ -11,7 +11,15 @@ import UIKit
 class HRWriteViewController: BaseViewController {
     
     var memoData: [String : Any] = [String : Any]()
-    var writeView: UITextView!
+    lazy var writeView: UITextView = UITextView()
+    
+    private lazy var titleLabel: UILabel = {
+       let label: UILabel = UILabel()
+       label.textColor = .white
+       label.font = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.semibold)
+       label.textAlignment = .center
+       return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +57,9 @@ class HRWriteViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        writeView.becomeFirstResponder()
+        if memoData.isEmpty {
+            writeView.becomeFirstResponder()
+        }
     }
  
     override func pressRightButton(_ sender: UIButton) {
@@ -74,8 +84,20 @@ class HRWriteViewController: BaseViewController {
     }
     
     func dataInsertFromText(memo:FMDatabase) {
+        guard writeView.text.count > 0,
+            let text = writeView.text
+            else {
+                let alertController = UIAlertController(title: "메모입력", message: "메모 내용을 채워주세요:)", preferredStyle: .alert)
+                let checkButton = UIAlertAction(title: "확인", style: .default) { _ in
+                alertController.dismiss(animated: true)
+                }
+                alertController.addAction(checkButton)
+                present(alertController, animated: true)
+                return
+        }
+        
         if memo.open(){
-            let insertSQL = "INSERT INTO MEMO (CONTENT, DATE, TEMPT) values ('\(writeView.text! as String)', DATETIME('now'), FALSE)"
+            let insertSQL = "INSERT INTO MEMO (CONTENT, DATE, TEMPT) values ('\(text)', DATETIME('now'), FALSE)"
             print(insertSQL)
             let result = memo.executeUpdate(insertSQL, withArgumentsIn: [])
             if !result{
@@ -93,7 +115,6 @@ class HRWriteViewController: BaseViewController {
         if memo.open(){
             if let number = memoData["ID"] as? NSNumber {
                 let updateSQL = "UPDATE MEMO SET CONTENT = '\(writeView.text! as String)', DATE = DATETIME('now'), TEMPT = FALSE WHERE ID = \(number)"
-//                let updateSQL = "DELETE FROM MEMO WHERE ID = \(number)"
                 print(updateSQL)
                 let result = memo.executeUpdate(updateSQL, withArgumentsIn: [])
                 if !result{
@@ -109,12 +130,24 @@ class HRWriteViewController: BaseViewController {
     
     @objc func didShow()
     {
-        
+        if memoData.isEmpty {
+            titleLabel.text = "새로운 메모 입력중!"
+        } else {
+            titleLabel.text = "메모 수정중!"
+        }
+        addTitleLabelFromSupverView()
     }
 
     @objc func didHide()
     {
-        
+        titleLabel.removeFromSuperview()
+    }
+    
+    private func addTitleLabelFromSupverView() {
+        navigationBar.topBackView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
     }
 }
 

@@ -24,7 +24,16 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         label.textAlignment = .center
         return label
     }()
-
+    
+    private lazy var writeButton: UIButton = {
+        let button: UIButton = UIButton(type: .custom)
+        button.setImage(#imageLiteral(resourceName: "plus"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "plus"), for: .highlighted)
+        button.addTarget(self, action: #selector(pressedWriteView), for: .touchUpInside)
+        view.addSubview(button)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +53,11 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         memoView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(navigationBar.snp.bottom)
+        }
+        
+        writeButton.snp.makeConstraints {
+            $0.bottom.trailing.bottom.equalToSuperview().offset(-40.0)
+            $0.width.height.equalTo(50.0)
         }
         
         let fileMgr = FileManager.default
