@@ -26,13 +26,13 @@ class CustomSearchNavigationBar: UIView {
     
     private func initialize() {
         clipsToBounds = true
-        backgroundColor = .green
+        backgroundColor = .white
         
         addSubview(leftButton)
         addSubview(rightButton)
         
         leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
-        rightButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
+        rightButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
         
         initButtons()
     }

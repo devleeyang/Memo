@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CFF4786DF9760648239E02A /* Pods_HRMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A60DE6F37EE66516DC657B /* Pods_HRMemo.framework */; };
 		3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */; };
 		3E235EB4224C731800AE221F /* HRContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB3224C731800AE221F /* HRContentCell.swift */; };
 		3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB5224CB23D00AE221F /* HRMailViewController.swift */; };
 		3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */; };
-		CDD5C454227ABEFB00062C60 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; };
-		CDD5C455227ABEFB00062C60 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E31B43022487A2C00841EB6 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7389CB49D7D3759AE4A5B0FA /* Pods_HRMemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */; };
 		CDD5C458227AC2AB00062C60 /* CustomSearchNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */; };
+		E9E0EE5B4BEDD99C31E39DB7 /* Pods_HRMemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708CB5AA0DE323565A2906E1 /* Pods_HRMemoUITests.framework */; };
 		EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29121A3F63200C4D754 /* HRListViewController.swift */; };
 		EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */; };
 		EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29621A405EC00C4D754 /* HRListCell.swift */; };
@@ -21,6 +22,8 @@
 		EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */; };
 		EE20153221A2C4A6006D9746 /* HRMemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153121A2C4A6006D9746 /* HRMemoTests.swift */; };
 		EE20153D21A2C4A6006D9746 /* HRMemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */; };
+		EE39B7A723544260001CDE15 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39B7A623544260001CDE15 /* String+Extension.swift */; };
+		EE3ECFC72350B5430008526C /* HREmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3ECFC62350B5430008526C /* HREmptyCell.swift */; };
 		EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D1225262B200422391 /* BaseViewController.swift */; };
 		EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D3225263C100422391 /* CustomTopView.swift */; };
 		EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */; };
@@ -38,6 +41,7 @@
 		EECC746521A2D8C500F17F3F /* FMDB.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744F21A2D7A100F17F3F /* FMDB.h */; };
 		EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744D21A2D7A100F17F3F /* FMResultSet.h */; };
 		EECC746721A2D8C500F17F3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC745421A2D7A200F17F3F /* FMResultSet.m */; };
+		EECD27AC23537CA800C14ADA /* HRIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +68,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CDD5C455227ABEFB00062C60 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,16 +75,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRSettingViewController.swift; sourceTree = "<group>"; };
 		3E235EB3224C731800AE221F /* HRContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRContentCell.swift; sourceTree = "<group>"; };
 		3E235EB5224CB23D00AE221F /* HRMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMailViewController.swift; sourceTree = "<group>"; };
-		3E31B43022487A2C00841EB6 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		708CB5AA0DE323565A2906E1 /* Pods_HRMemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		712D6539E63DF6B036C7BCC8 /* Pods-HRMemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoTests/Pods-HRMemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9831686827863F81D93C13C2 /* Pods-HRMemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoTests/Pods-HRMemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		A93D94B6896609CE78E9D7F9 /* Pods-HRMemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo.debug.xcconfig"; sourceTree = "<group>"; };
+		ADBD0542779E4ACA3607D870 /* Pods-HRMemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoUITests/Pods-HRMemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchNavigationBar.swift; sourceTree = "<group>"; };
+		D6A60DE6F37EE66516DC657B /* Pods_HRMemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E12F0C5A0997A2C85D1A7DB7 /* Pods-HRMemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoUITests/Pods-HRMemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE0DF29121A3F63200C4D754 /* HRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListViewController.swift; sourceTree = "<group>"; };
 		EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRWriteViewController.swift; sourceTree = "<group>"; };
 		EE0DF29621A405EC00C4D754 /* HRListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListCell.swift; sourceTree = "<group>"; };
-		EE20151921A2C4A3006D9746 /* HRMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HRMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE20151921A2C4A3006D9746 /* Easy Memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy Memo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20151C21A2C4A3006D9746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE20152321A2C4A6006D9746 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE20152621A2C4A6006D9746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,6 +102,8 @@
 		EE20153821A2C4A6006D9746 /* HRMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HRMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMemoUITests.swift; sourceTree = "<group>"; };
 		EE20153E21A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE39B7A623544260001CDE15 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		EE3ECFC62350B5430008526C /* HREmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HREmptyCell.swift; sourceTree = "<group>"; };
 		EE50C2D1225262B200422391 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EE50C2D3225263C100422391 /* CustomTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopView.swift; sourceTree = "<group>"; };
 		EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
@@ -111,6 +123,8 @@
 		EECC745221A2D7A200F17F3F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EECC745321A2D7A200F17F3F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		EECC745421A2D7A200F17F3F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRIntroViewController.swift; sourceTree = "<group>"; };
+		FE5C94799CAB33A5563DB5A8 /* Pods-HRMemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EECC744221A2D02500F17F3F /* libsqlite3.tbd in Frameworks */,
-				CDD5C454227ABEFB00062C60 /* SnapKit.framework in Frameworks */,
+				3CFF4786DF9760648239E02A /* Pods_HRMemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7389CB49D7D3759AE4A5B0FA /* Pods_HRMemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,12 +149,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E0EE5B4BEDD99C31E39DB7 /* Pods_HRMemoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1985C382914321C74A7D69C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A93D94B6896609CE78E9D7F9 /* Pods-HRMemo.debug.xcconfig */,
+				FE5C94799CAB33A5563DB5A8 /* Pods-HRMemo.release.xcconfig */,
+				712D6539E63DF6B036C7BCC8 /* Pods-HRMemoTests.debug.xcconfig */,
+				9831686827863F81D93C13C2 /* Pods-HRMemoTests.release.xcconfig */,
+				E12F0C5A0997A2C85D1A7DB7 /* Pods-HRMemoUITests.debug.xcconfig */,
+				ADBD0542779E4ACA3607D870 /* Pods-HRMemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3E3D9C6E224A040D000387FE /* Navibar */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +184,7 @@
 			children = (
 				EE0DF29621A405EC00C4D754 /* HRListCell.swift */,
 				3E235EB3224C731800AE221F /* HRContentCell.swift */,
+				EE3ECFC62350B5430008526C /* HREmptyCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -162,19 +192,19 @@
 		EE20151021A2C4A3006D9746 = {
 			isa = PBXGroup;
 			children = (
-				3E31B43022487A2C00841EB6 /* SnapKit.framework */,
 				EE20151B21A2C4A3006D9746 /* HRMemo */,
 				EE20153021A2C4A6006D9746 /* HRMemoTests */,
 				EE20153B21A2C4A6006D9746 /* HRMemoUITests */,
 				EE20151A21A2C4A3006D9746 /* Products */,
 				EECC743E21A2CFEA00F17F3F /* Frameworks */,
+				1985C382914321C74A7D69C1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		EE20151A21A2C4A3006D9746 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EE20151921A2C4A3006D9746 /* HRMemo.app */,
+				EE20151921A2C4A3006D9746 /* Easy Memo.app */,
 				EE20152D21A2C4A6006D9746 /* HRMemoTests.xctest */,
 				EE20153821A2C4A6006D9746 /* HRMemoUITests.xctest */,
 			);
@@ -186,11 +216,8 @@
 			children = (
 				EECC744621A2D17C00F17F3F /* Bridging-Header.h */,
 				EE20151C21A2C4A3006D9746 /* AppDelegate.swift */,
-				EE0DF29121A3F63200C4D754 /* HRListViewController.swift */,
-				3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */,
-				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
-				3E235EB5224CB23D00AE221F /* HRMailViewController.swift */,
 				EE50C2D1225262B200422391 /* BaseViewController.swift */,
+				EECD27AD23537CAF00C14ADA /* Controller */,
 				EE0DF29521A405BC00C4D754 /* Cell */,
 				3E3D9C6E224A040D000387FE /* Navibar */,
 				EE79E8C6234EFE6800C28753 /* Extension */,
@@ -225,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */,
+				EE39B7A623544260001CDE15 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -234,6 +262,9 @@
 			children = (
 				EECC744121A2D02500F17F3F /* libsqlite3.tbd */,
 				EECC743F21A2CFEA00F17F3F /* libsqlite3.0.tbd */,
+				D6A60DE6F37EE66516DC657B /* Pods_HRMemo.framework */,
+				0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */,
+				708CB5AA0DE323565A2906E1 /* Pods_HRMemoUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,6 +297,18 @@
 			path = fmdb;
 			sourceTree = "<group>";
 		};
+		EECD27AD23537CAF00C14ADA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE0DF29121A3F63200C4D754 /* HRListViewController.swift */,
+				3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */,
+				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
+				3E235EB5224CB23D00AE221F /* HRMailViewController.swift */,
+				EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,11 +316,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE20154121A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemo" */;
 			buildPhases = (
+				EBCDF2366D2DBCEC8D803A3A /* [CP] Check Pods Manifest.lock */,
 				EE20151521A2C4A3006D9746 /* Sources */,
 				EE20151621A2C4A3006D9746 /* Frameworks */,
 				EE20151721A2C4A3006D9746 /* Resources */,
-				3E31B42F2248798A00841EB6 /* ShellScript */,
 				CDD5C456227ABEFB00062C60 /* Embed Frameworks */,
+				998913167EBD4AC05D8B3EFC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,13 +329,14 @@
 			);
 			name = HRMemo;
 			productName = HRMemo;
-			productReference = EE20151921A2C4A3006D9746 /* HRMemo.app */;
+			productReference = EE20151921A2C4A3006D9746 /* Easy Memo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EE20152C21A2C4A6006D9746 /* HRMemoTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE20154421A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemoTests" */;
 			buildPhases = (
+				5C6F1DD65261A1A067A72FC5 /* [CP] Check Pods Manifest.lock */,
 				EE20152921A2C4A6006D9746 /* Sources */,
 				EE20152A21A2C4A6006D9746 /* Frameworks */,
 				EE20152B21A2C4A6006D9746 /* Resources */,
@@ -310,6 +355,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE20154721A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemoUITests" */;
 			buildPhases = (
+				4D74DB728BAE376A2E6FC981 /* [CP] Check Pods Manifest.lock */,
 				EE20153421A2C4A6006D9746 /* Sources */,
 				EE20153521A2C4A6006D9746 /* Frameworks */,
 				EE20153621A2C4A6006D9746 /* Resources */,
@@ -397,7 +443,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3E31B42F2248798A00841EB6 /* ShellScript */ = {
+		4D74DB728BAE376A2E6FC981 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -405,15 +451,85 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HRMemoUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# carhage build\n/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C6F1DD65261A1A067A72FC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HRMemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		998913167EBD4AC05D8B3EFC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBCDF2366D2DBCEC8D803A3A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HRMemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -435,11 +551,14 @@
 				EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */,
 				EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */,
 				EE7C1CBC22D86D4900810AE8 /* NavigationBarScroll.swift in Sources */,
+				EE3ECFC72350B5430008526C /* HREmptyCell.swift in Sources */,
 				3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */,
 				CDD5C458227AC2AB00062C60 /* CustomSearchNavigationBar.swift in Sources */,
 				EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */,
 				EECC746321A2D8C500F17F3F /* FMDatabaseQueue.h in Sources */,
 				EECC746421A2D8C500F17F3F /* FMDatabaseQueue.m in Sources */,
+				EE39B7A723544260001CDE15 /* String+Extension.swift in Sources */,
+				EECD27AC23537CA800C14ADA /* HRIntroViewController.swift in Sources */,
 				EECC746521A2D8C500F17F3F /* FMDB.h in Sources */,
 				EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */,
 				3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */,
@@ -543,7 +662,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -598,7 +717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -610,56 +729,62 @@
 		};
 		EE20154221A2C4A6006D9746 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A93D94B6896609CE78E9D7F9 /* Pods-HRMemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = GQ2YK62N76;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = HRMemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Easy Memo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		EE20154321A2C4A6006D9746 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE5C94799CAB33A5563DB5A8 /* Pods-HRMemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 3;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GQ2YK62N76;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = HRMemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Easy Memo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		EE20154521A2C4A6006D9746 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 712D6539E63DF6B036C7BCC8 /* Pods-HRMemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -680,6 +805,7 @@
 		};
 		EE20154621A2C4A6006D9746 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9831686827863F81D93C13C2 /* Pods-HRMemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -700,6 +826,7 @@
 		};
 		EE20154821A2C4A6006D9746 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E12F0C5A0997A2C85D1A7DB7 /* Pods-HRMemoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -719,6 +846,7 @@
 		};
 		EE20154921A2C4A6006D9746 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADBD0542779E4ACA3607D870 /* Pods-HRMemoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -10,29 +10,31 @@ import UIKit
 import SnapKit
 
 class BaseViewController: UIViewController {
-    let top = CustomTopView()
-    let navi = CustomNavigationBar()
+    let topView = CustomTopView()
+    let navigationBar = CustomNavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         initNaviBar()
-        navi.leftButton.addTarget(self, action: #selector(pressLeftButton(_:)), for: .touchUpInside)
-        navi.rightButton.addTarget(self, action: #selector(pressRightButton(_:)), for: .touchUpInside)
-        navi.bottomRightButton.addTarget(self, action: #selector(pressBottomRightButton(_:)), for: .touchUpInside)
+        navigationBar.leftButton.addTarget(self, action: #selector(pressLeftButton(_:)), for: .touchUpInside)
+        navigationBar.rightButton.addTarget(self, action: #selector(pressRightButton(_:)), for: .touchUpInside)
+        navigationBar.bottomRightButton.addTarget(self, action: #selector(pressBottomRightButton(_:)), for: .touchUpInside)
+        topView.backgroundColor = UIColor(red: 55.0/255.0, green: 185.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        navigationBar.backgroundColor = UIColor(red: 55.0/255.0, green: 185.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
     
     func initNaviBar() {
-        view.addSubview(top)
-        view.addSubview(navi)
+        view.addSubview(topView)
+        view.addSubview(navigationBar)
         
-        top.snp.makeConstraints {
+        topView.snp.makeConstraints {
             $0.top.equalTo(view.snp.top)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(navi.snp.top)
+            $0.bottom.equalTo(navigationBar.snp.top)
         }
         
-        navi.snp.makeConstraints {
+        navigationBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(44)
@@ -48,6 +50,6 @@ class BaseViewController: UIViewController {
     }
     
     @objc func pressBottomRightButton(_ sender: UIButton) {
-        navi.scrollView.scrollToTop()
+        navigationBar.scrollView.scrollToTop()
     }
 }
