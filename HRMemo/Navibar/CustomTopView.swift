@@ -23,6 +23,6 @@ class CustomTopView: UIView {
     
     private func initialize() {
         clipsToBounds = true
-        self.backgroundColor = .red
+        self.backgroundColor = .white
     }
 }

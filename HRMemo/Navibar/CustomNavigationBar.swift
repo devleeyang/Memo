@@ -10,9 +10,9 @@ import UIKit
 import SnapKit
 
 class CustomNavigationBar: UIView {
-    lazy var leftButton: UIButton = UIButton()
-    lazy var rightButton: UIButton = UIButton()
-    lazy var bottomRightButton: UIButton = UIButton()
+    lazy var leftButton: UIButton = UIButton(type: .custom)
+    lazy var rightButton: UIButton = UIButton(type: .custom)
+    lazy var bottomRightButton: UIButton = UIButton(type: .custom)
     lazy var scrollView: UIScrollView = UIScrollView()
     lazy var scrollContentView: UIView = UIView()
     lazy var topBackView: UIView = UIView()
@@ -30,8 +30,6 @@ class CustomNavigationBar: UIView {
     
     private func initialize() {
         clipsToBounds = true
-        backgroundColor = .green
-        scrollContentView.backgroundColor = .gray
         addSubview(scrollView)
         scrollView.addSubview(scrollContentView)
         scrollContentView.addSubview(topBackView)
@@ -46,11 +44,7 @@ class CustomNavigationBar: UIView {
         initButtons()
     }
     
-    func initViews() {
-        scrollView.backgroundColor = .blue
-        topBackView.backgroundColor = .brown
-        bottomBackView.backgroundColor = .yellow
-        
+    private func initViews() {
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.height.equalTo(scrollContentView.snp.height).priority(.low)
@@ -76,7 +70,7 @@ class CustomNavigationBar: UIView {
         scrollView.setNeedsLayout()
     }
     
-    func initButtons() {
+    private func initButtons() {
         
         leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
         leftButton.snp.makeConstraints {
@@ -93,5 +87,15 @@ class CustomNavigationBar: UIView {
             $0.top.bottom.trailing.equalToSuperview()
             $0.width.equalTo(50)
         }
+    }
+    
+    func changeLeftButtonImage(imageName: String) {
+        leftButton.setImage(#imageLiteral(resourceName: imageName), for: .normal)
+        leftButton.setImage(#imageLiteral(resourceName: imageName), for: .highlighted)
+    }
+    
+    func changeRightButtonImage(imageName: String) {
+        rightButton.setImage(#imageLiteral(resourceName: imageName), for: .normal)
+        rightButton.setImage(#imageLiteral(resourceName: imageName), for: .highlighted)
     }
 }

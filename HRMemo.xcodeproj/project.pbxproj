@@ -39,6 +39,7 @@
 		EECC746521A2D8C500F17F3F /* FMDB.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744F21A2D7A100F17F3F /* FMDB.h */; };
 		EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744D21A2D7A100F17F3F /* FMResultSet.h */; };
 		EECC746721A2D8C500F17F3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC745421A2D7A200F17F3F /* FMResultSet.m */; };
+		EECD27AC23537CA800C14ADA /* HRIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		EECC745221A2D7A200F17F3F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EECC745321A2D7A200F17F3F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		EECC745421A2D7A200F17F3F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRIntroViewController.swift; sourceTree = "<group>"; };
 		FE5C94799CAB33A5563DB5A8 /* Pods-HRMemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -558,6 +560,7 @@
 				EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */,
 				EECC746321A2D8C500F17F3F /* FMDatabaseQueue.h in Sources */,
 				EECC746421A2D8C500F17F3F /* FMDatabaseQueue.m in Sources */,
+				EECD27AC23537CA800C14ADA /* HRIntroViewController.swift in Sources */,
 				EECC746521A2D8C500F17F3F /* FMDB.h in Sources */,
 				EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */,
 				3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */,
