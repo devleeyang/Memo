@@ -15,9 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow()
-        let mainVC = HRListViewController()
-        let navi = UINavigationController(rootViewController: mainVC)
-        window?.rootViewController = navi
+        let introViewController = HRIntroViewController()
+        window?.rootViewController = introViewController
         window?.makeKeyAndVisible()
         return true
     }

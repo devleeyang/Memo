@@ -12,49 +12,38 @@ import SnapKit
 class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
     private lazy var memoView = UITableView()
     private let listId = "HRListCell"
+    private let emptyId = "HREmptyCell"
     private var databasePath = String()
     private let searchController = UISearchController(searchResultsController: nil)
-    var memoList = Array<Dictionary<String, Any>>()
+    var memoList = [[String:Any]]()
     
-    private lazy var addButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        button.setTitle("+", for: .normal)
-        button.setTitle("+", for: .selected)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 29)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.white, for: .selected)
-        button.backgroundColor = .blue
-        button.layer.cornerRadius = button.bounds.size.width / 2
-        button.addTarget(self, action: #selector(pressedWriteView), for: .touchUpInside)
-        
-        return button
+    private lazy var titleLabel: UILabel = {
+        let label: UILabel = UILabel()
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.semibold)
+        label.textAlignment = .center
+        return label
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.backgroundColor = .clear
-        navi.leftButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
-        navi.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
-        navi.bottomRightButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
-        navi.scrollView.isScrollEnabled = false
+        navigationBar.leftButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
+        navigationBar.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        navigationBar.bottomRightButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+        navigationBar.scrollView.isScrollEnabled = false
         
         view.addSubview(memoView)
-        view.addSubview(addButton)
-        memoView.backgroundColor = UIColor(red:224.0/255.0, green:218.0/255.0, blue:245.0/255.0, alpha:1.0)
         memoView.register(HRListCell.self, forCellReuseIdentifier: listId)
+        memoView.register(HREmptyCell.self, forCellReuseIdentifier: emptyId)
         memoView.keyboardDismissMode = .onDrag
         memoView.delegate = self
         memoView.dataSource = self
         
         memoView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(navi.snp.bottom)
-        }
-        
-        addButton.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview().offset(-30)
-            $0.size.width.height.equalTo(50)
+            $0.top.equalTo(navigationBar.snp.bottom)
         }
         
         let fileMgr = FileManager.default
@@ -120,7 +109,7 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     }
     
     override func pressRightButton(_ sender: UIButton) {
-        navi.scrollView.scrollToBottom()
+        navigationBar.scrollView.scrollToBottom()
     }
     
     @objc func pressedWriteView(_ sender: UIButton) {
@@ -214,10 +203,15 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
 
 extension HRListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memoList.count > 0 ? memoList.count : 0
+        return memoList.count > 0 ? memoList.count : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if memoList.isEmpty {
+            let cell: HREmptyCell = memoView.dequeueReusableCell(withIdentifier: emptyId, for: indexPath) as! HREmptyCell
+            return cell
+        }
+        
         let cell:HRListCell = memoView.dequeueReusableCell(withIdentifier: listId, for: indexPath) as! HRListCell
         if let contentString = memoList[indexPath.row]["CONTENT"] as? String {
             cell.contentLabel.text = contentString
@@ -292,6 +286,10 @@ extension HRListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if memoList.isEmpty {
+            return 500.0
+        } else {
+            return UITableView.automaticDimension
+        }
     }
 }

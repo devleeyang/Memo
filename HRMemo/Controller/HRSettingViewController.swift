@@ -18,12 +18,12 @@ class HRSettingViewController: BaseViewController {
         settingView.register(HRContentCell.self, forCellReuseIdentifier: contentId)
         settingView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(navi.snp.bottom)
+            $0.top.equalTo(navigationBar.snp.bottom)
         }
         settingView.delegate = self
         settingView.dataSource = self
         
-        navi.leftButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
+        navigationBar.leftButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
     }
 }
 

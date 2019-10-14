@@ -9,28 +9,27 @@
 import UIKit
 
 class HRContentCell: UITableViewCell {
-    var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .left
-        
+        contentView.addSubview(label)
         return label
     }()
     
-    var arrowImg: UIImageView = {
+    lazy var arrowImg: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "next")
+        imageView.image = #imageLiteral(resourceName: "blackArrow")
         imageView.clipsToBounds = false
+        contentView.addSubview(imageView)
         return imageView
     }()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(arrowImg)
-        contentView.backgroundColor = UIColor(red:224.0/255.0, green:218.0/255.0, blue:245.0/255.0, alpha:1.0)
+        contentView.backgroundColor = .white
         
         titleLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
