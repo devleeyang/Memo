@@ -22,7 +22,7 @@
 		EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */; };
 		EE20153221A2C4A6006D9746 /* HRMemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153121A2C4A6006D9746 /* HRMemoTests.swift */; };
 		EE20153D21A2C4A6006D9746 /* HRMemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */; };
-		EE39B7A723544260001CDE15 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39B7A623544260001CDE15 /* String+Extension.swift */; };
+		EE3799382354D6BD00065BA4 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */; };
 		EE3ECFC72350B5430008526C /* HREmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3ECFC62350B5430008526C /* HREmptyCell.swift */; };
 		EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D1225262B200422391 /* BaseViewController.swift */; };
 		EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D3225263C100422391 /* CustomTopView.swift */; };
@@ -102,7 +102,7 @@
 		EE20153821A2C4A6006D9746 /* HRMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HRMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMemoUITests.swift; sourceTree = "<group>"; };
 		EE20153E21A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE39B7A623544260001CDE15 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		EE3ECFC62350B5430008526C /* HREmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HREmptyCell.swift; sourceTree = "<group>"; };
 		EE50C2D1225262B200422391 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EE50C2D3225263C100422391 /* CustomTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopView.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */,
-				EE39B7A623544260001CDE15 /* String+Extension.swift */,
+				EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -545,6 +545,7 @@
 				EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */,
 				EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */,
 				3E235EB4224C731800AE221F /* HRContentCell.swift in Sources */,
+				EE3799382354D6BD00065BA4 /* UIColor+Extension.swift in Sources */,
 				EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */,
 				EECC746021A2D8C500F17F3F /* FMDatabaseAdditions.m in Sources */,
 				3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */,
@@ -557,7 +558,6 @@
 				EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */,
 				EECC746321A2D8C500F17F3F /* FMDatabaseQueue.h in Sources */,
 				EECC746421A2D8C500F17F3F /* FMDatabaseQueue.m in Sources */,
-				EE39B7A723544260001CDE15 /* String+Extension.swift in Sources */,
 				EECD27AC23537CA800C14ADA /* HRIntroViewController.swift in Sources */,
 				EECC746521A2D8C500F17F3F /* FMDB.h in Sources */,
 				EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */,
@@ -734,11 +734,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = GQ2YK62N76;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = HRMemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -761,12 +759,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = GQ2YK62N76;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = HRMemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

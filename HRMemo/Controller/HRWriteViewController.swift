@@ -30,13 +30,13 @@ class HRWriteViewController: BaseViewController {
         navigationBar.changeRightButtonImage(imageName: "checkmark")
         navigationBar.scrollView.isScrollEnabled = false
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.contentColor
 
         writeView = UITextView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        writeView.textAlignment = NSTextAlignment.justified
-        writeView.textColor = .black
+        writeView.textAlignment = .justified
+        writeView.textColor = .contentTextColor
         writeView.font = UIFont.systemFont(ofSize: 21)
-        writeView.backgroundColor = .white
+        writeView.backgroundColor = UIColor.contentColor
 
         view.addSubview(writeView)
         
