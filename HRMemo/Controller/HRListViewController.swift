@@ -42,6 +42,8 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboard()
+        
         view.backgroundColor = .white
         memoView.backgroundColor = .contentColor
         memoView.separatorStyle = .none
@@ -363,10 +365,6 @@ extension HRListViewController: UITableViewDelegate {
             print("Error : memoDB open Fail, \(memoDB.lastError())")
         }
         memoDB.close()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
     
     @objc private func changedTextFromTextField(_ textField: UITextField) {

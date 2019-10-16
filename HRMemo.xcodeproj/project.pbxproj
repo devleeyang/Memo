@@ -29,6 +29,7 @@
 		EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */; };
 		EE7C1CBC22D86D4900810AE8 /* NavigationBarScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */; };
 		EE82EB4723576EA1005DF22A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE82EB4623576EA1005DF22A /* CustomTextField.swift */; };
+		EE82EB492357829A005DF22A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE82EB482357829A005DF22A /* UIViewController+Extension.swift */; };
 		EECC744221A2D02500F17F3F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EECC744121A2D02500F17F3F /* libsqlite3.tbd */; };
 		EECC745C21A2D88A00F17F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20151C21A2C4A3006D9746 /* AppDelegate.swift */; };
 		EECC745D21A2D8C500F17F3F /* FMDatabase.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744C21A2D7A100F17F3F /* FMDatabase.h */; };
@@ -110,6 +111,7 @@
 		EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
 		EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarScroll.swift; sourceTree = "<group>"; };
 		EE82EB4623576EA1005DF22A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		EE82EB482357829A005DF22A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		EECC743F21A2CFEA00F17F3F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		EECC744121A2D02500F17F3F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EECC744621A2D17C00F17F3F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */,
 				EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */,
+				EE82EB482357829A005DF22A /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				EECC745D21A2D8C500F17F3F /* FMDatabase.h in Sources */,
 				EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */,
 				EECC745E21A2D8C500F17F3F /* FMDatabase.m in Sources */,
+				EE82EB492357829A005DF22A /* UIViewController+Extension.swift in Sources */,
 				EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */,
 				EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */,
 				EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */,
