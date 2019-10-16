@@ -47,7 +47,6 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
  
         navigationBar.leftButton.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
         navigationBar.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
-        navigationBar.bottomRightButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
         navigationBar.scrollView.isScrollEnabled = false
         
         view.addSubview(memoView)

@@ -9,7 +9,6 @@
 import UIKit
 
 class HRWriteViewController: BaseViewController {
-    
     var memoData: [String : Any] = [String : Any]()
     lazy var writeView: UITextView = UITextView()
     

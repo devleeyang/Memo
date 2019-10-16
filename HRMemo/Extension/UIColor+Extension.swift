@@ -65,7 +65,7 @@ extension UIColor {
         }
     }
     
-    static var separatorLineColor: UIColor {
+    static var grayColor: UIColor {
         if #available(iOS 13, *) {
             return UIColor { (traitCollection: UITraitCollection) -> UIColor in
                 if traitCollection.userInterfaceStyle == .dark {

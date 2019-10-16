@@ -19,7 +19,8 @@ class BaseViewController: UIViewController {
         initNaviBar()
         navigationBar.leftButton.addTarget(self, action: #selector(pressLeftButton(_:)), for: .touchUpInside)
         navigationBar.rightButton.addTarget(self, action: #selector(pressRightButton(_:)), for: .touchUpInside)
-        navigationBar.bottomRightButton.addTarget(self, action: #selector(pressBottomRightButton(_:)), for: .touchUpInside)
+        navigationBar.bottomSearchView.rightButton.addTarget(self, action: #selector(pressBottomRightButton(_:)), for: .touchUpInside)
+        navigationBar.bottomSearchView.leftButton.addTarget(self, action: #selector(pressBottomRightButton(_:)), for: .touchUpInside)
         topView.backgroundColor = UIColor.navigationBarColor
         navigationBar.backgroundColor = UIColor.navigationBarColor
     }
@@ -50,6 +51,10 @@ class BaseViewController: UIViewController {
     }
     
     @objc func pressBottomRightButton(_ sender: UIButton) {
+        navigationBar.scrollView.scrollToTop()
+    }
+    
+    @objc func pressBottomLeftButton(_ sender: UIButton) {
         navigationBar.scrollView.scrollToTop()
     }
 }
