@@ -20,8 +20,8 @@ class BaseViewController: UIViewController {
         navigationBar.leftButton.addTarget(self, action: #selector(pressLeftButton(_:)), for: .touchUpInside)
         navigationBar.rightButton.addTarget(self, action: #selector(pressRightButton(_:)), for: .touchUpInside)
         navigationBar.bottomRightButton.addTarget(self, action: #selector(pressBottomRightButton(_:)), for: .touchUpInside)
-        topView.backgroundColor = UIColor(red: 55.0/255.0, green: 185.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-        navigationBar.backgroundColor = UIColor(red: 55.0/255.0, green: 185.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        topView.backgroundColor = UIColor.navigationBarColor
+        navigationBar.backgroundColor = UIColor.navigationBarColor
     }
     
     func initNaviBar() {
