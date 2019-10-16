@@ -11,7 +11,7 @@ import UIKit
 class HRContentCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .contentTextColor
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .left
         contentView.addSubview(label)
@@ -29,7 +29,7 @@ class HRContentCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
         
         titleLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()

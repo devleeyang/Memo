@@ -50,7 +50,7 @@ class HRIntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 55.0/255.0, green: 185.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        view.backgroundColor = UIColor(red: 33.0/255.0, green: 144.0/255.0, blue: 173.0/255.0, alpha: 1.0)
         centerView.snp.makeConstraints {
             $0.width.height.equalTo(1.0)
             $0.centerY.centerX.equalToSuperview()

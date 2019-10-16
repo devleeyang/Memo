@@ -97,7 +97,7 @@ extension HRSettingViewController: UITableViewDelegate {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         
         let title = UILabel()
-        title.textColor = .black
+        title.textColor = .contentTextColor
         title.font = UIFont.systemFont(ofSize: 13)
     
         headerView.addSubview(title)
