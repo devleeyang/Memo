@@ -243,11 +243,15 @@ extension HRListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if memoList.isEmpty && !isSearched {
             let cell: HREmptyCell = memoView.dequeueReusableCell(withIdentifier: emptyId, for: indexPath) as! HREmptyCell
+            cell.content = "기록이 아직 없네요\n잊지 않게 메모를 시작해보아요:)"
+            cell.selectionStyle = .none
             return cell
         }
         
         if searchList.isEmpty && isSearched {
             let cell: HREmptyCell = memoView.dequeueReusableCell(withIdentifier: emptyId, for: indexPath) as! HREmptyCell
+            cell.content = "검색된 메모가 없어요 ㅠ.ㅠ"
+            cell.selectionStyle = .none
             return cell
         }
         let dataList: [[String:Any]]
@@ -273,14 +277,22 @@ extension HRListViewController: UITableViewDataSource {
 
 extension HRListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let writeVC = HRWriteViewController()
-        if searchList.isEmpty {
+        let status: (Bool, Bool) = (memoList.isEmpty, searchList.isEmpty)
+        
+        switch status {
+        case (true, true):
+            return
+        case (false, true):
+            let writeVC = HRWriteViewController()
             writeVC.memoData = memoList[indexPath.row]
-        } else {
+            navigationController?.pushViewController(writeVC, animated: true)
+            return
+        case (_, false):
+            let writeVC = HRWriteViewController()
             writeVC.memoData = searchList[indexPath.row]
+            navigationController?.pushViewController(writeVC, animated: true)
+            break
         }
-
-        navigationController?.pushViewController(writeVC, animated: true)
     }
     
     
@@ -336,12 +348,16 @@ extension HRListViewController: UITableViewDelegate {
         return UISwipeActionsConfiguration(actions:[deleteAction])
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if memoList.isEmpty {
-            return 500.0
-        } else {
-            return UITableView.automaticDimension
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard navigationController != nil else {
+            return UIScreen.main.bounds.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom
         }
+        
+        if (memoList.isEmpty && !isSearched) || (searchList.isEmpty && isSearched) {
+            return memoView.frame.size.height - view.safeAreaInsets.bottom
+        }
+    
+        return 70.0
     }
     
     private func searchTextFromMemo(text: String) {
