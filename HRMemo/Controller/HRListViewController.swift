@@ -9,12 +9,11 @@
 import UIKit
 import SnapKit
 
-class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
+class HRListViewController: BaseViewController {
     private lazy var memoView: UITableView = UITableView()
     private let listId: String = "HRListCell"
     private let emptyId: String = "HREmptyCell"
     private var databasePath = String()
-    private let searchController: UISearchController = UISearchController(searchResultsController: nil)
     private var isSearched: Bool = false
     var memoList: [[String:Any]] = [[String:Any]]()
     var searchList: [[String:Any]] = [[String:Any]]()
@@ -53,6 +52,7 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
         navigationBar.rightButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
         navigationBar.bottomSearchView.textField.delegate = self
         navigationBar.bottomSearchView.textField.addTarget(self, action: #selector(changedTextFromTextField(_:)), for: .editingChanged)
+        navigationBar.bottomSearchView.leftButton.isEnabled = false
         navigationBar.scrollView.isScrollEnabled = false
         
         view.addSubview(memoView)
@@ -101,34 +101,38 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        memoList.removeAll()
-        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let docsDir = dirPath[0]
-        print(docsDir)
-        
-        databasePath = docsDir.appending("/memo.db")
-        
-        let memoDB = FMDatabase(path: databasePath)
-        
-        if memoDB.open(){
-            let selectSQL = "SELECT * FROM MEMO ORDER BY DATE DESC"
-            print(selectSQL)
-            do {
-                let result = try memoDB.executeQuery(selectSQL, values: [])
-                while(result.next()) {
-                    if let element = result.resultDictionary as? [String : Any] {
-                        memoList.append(element)
+        guard isSearched else {
+            memoList.removeAll()
+            let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let docsDir = dirPath[0]
+            print(docsDir)
+            
+            databasePath = docsDir.appending("/memo.db")
+            
+            let memoDB = FMDatabase(path: databasePath)
+            
+            if memoDB.open(){
+                let selectSQL = "SELECT * FROM MEMO ORDER BY DATE DESC"
+                print(selectSQL)
+                do {
+                    let result = try memoDB.executeQuery(selectSQL, values: [])
+                    while(result.next()) {
+                        if let element = result.resultDictionary as? [String : Any] {
+                            memoList.append(element)
+                        }
+                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
                     }
-                    print("result.resultDictionary : \(String(describing: result.resultDictionary))")
+                } catch  {
+                    print("error")
                 }
-            } catch  {
-                print("error")
+            } else {
+                print("Error : memoDB open Fail, \(memoDB.lastError())")
             }
-        } else {
-            print("Error : memoDB open Fail, \(memoDB.lastError())")
+            memoDB.close()
+            memoView.reloadData()
+            
+            return
         }
-        memoDB.close()
-        memoView.reloadData()
     }
     
     override func pressLeftButton(_ sender: UIButton) {
@@ -137,29 +141,28 @@ class HRListViewController: BaseViewController, UISearchBarDelegate, UISearchRes
     }
     
     override func pressRightButton(_ sender: UIButton) {
+        isSearched = true
+        navigationBar.bottomSearchView.textField.becomeFirstResponder()
+        memoView.reloadData()
         navigationBar.scrollView.scrollToBottom()
+    }
+    
+    override func pressBottomRightButton(_ sender: UIButton) {
+        isSearched = false
+        navigationBar.bottomSearchView.textField.resignFirstResponder()
+        memoView.reloadData()
+        navigationBar.scrollView.scrollToTop()
     }
     
     @objc func pressedWriteView(_ sender: UIButton) {
         let writeVC = HRWriteViewController()
         navigationController?.pushViewController(writeVC, animated: true)
     }
-    
-    @objc func searchInputText(_ sender: UIButton) {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Candies"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-    }
+
     
     @objc func pressedSetting(_ sender: UIButton) {
         let settingVC = HRSettingViewController()
         navigationController?.pushViewController(settingVC, animated: true)
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
     }
     
     func stringToDate(_ str: String)->Date{
@@ -271,7 +274,12 @@ extension HRListViewController: UITableViewDataSource {
 extension HRListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let writeVC = HRWriteViewController()
-        writeVC.memoData = memoList[indexPath.row]
+        if searchList.isEmpty {
+            writeVC.memoData = memoList[indexPath.row]
+        } else {
+            writeVC.memoData = searchList[indexPath.row]
+        }
+
         navigationController?.pushViewController(writeVC, animated: true)
     }
     
@@ -380,10 +388,6 @@ extension HRListViewController: UITableViewDelegate {
 }
 
 extension HRListViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        isSearched = true
-    }
-    
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         searchList.removeAll()
         return true
@@ -395,7 +399,6 @@ extension HRListViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        isSearched = false
         searchList.removeAll()
     }
 }
