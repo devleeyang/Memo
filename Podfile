@@ -7,6 +7,7 @@ target 'HRMemo' do
 
   # Pods for HRMemo
   pod 'SnapKit', '~> 5.0'
+  pod 'IQKeyboardManagerSwift', '~> 6.5'
 
   target 'HRMemoTests' do
     inherit! :search_paths

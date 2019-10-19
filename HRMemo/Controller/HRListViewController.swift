@@ -17,6 +17,7 @@ class HRListViewController: BaseViewController {
     private var isSearched: Bool = false
     var memoList: [[String:Any]] = [[String:Any]]()
     var searchList: [[String:Any]] = [[String:Any]]()
+    var tableViewInsetTop: CGFloat = 0.0
     
     private lazy var titleLabel: UILabel = {
         let label: UILabel = UILabel()
@@ -54,6 +55,9 @@ class HRListViewController: BaseViewController {
         navigationBar.bottomSearchView.textField.addTarget(self, action: #selector(changedTextFromTextField(_:)), for: .editingChanged)
         navigationBar.bottomSearchView.leftButton.isEnabled = false
         navigationBar.scrollView.isScrollEnabled = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         view.addSubview(memoView)
         memoView.register(HRListCell.self, forCellReuseIdentifier: listId)
@@ -96,6 +100,7 @@ class HRListViewController: BaseViewController {
             print("memoDB is exist")
         }
         memoDB.close()
+        
         
     }
     
@@ -150,6 +155,8 @@ class HRListViewController: BaseViewController {
     override func pressBottomRightButton(_ sender: UIButton) {
         isSearched = false
         navigationBar.bottomSearchView.textField.resignFirstResponder()
+        navigationBar.bottomSearchView.textField.text = ""
+        searchList.removeAll()
         memoView.reloadData()
         navigationBar.scrollView.scrollToTop()
     }
@@ -164,6 +171,25 @@ class HRListViewController: BaseViewController {
         let settingVC = HRSettingViewController()
         navigationController?.pushViewController(settingVC, animated: true)
     }
+    
+    @objc func didShow(notification: Notification)
+     {
+        if navigationBar.bottomSearchView.textField.text?.isEmpty ?? true {
+            guard let info = notification.userInfo else { return }
+            guard let frameInfo = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+            let keyboardFrame = frameInfo.cgRectValue
+            let contentHeight = memoView.frame.height - memoView.frame.origin.y - keyboardFrame.height
+            tableViewInsetTop = -(contentHeight / 2.0)
+            memoView.contentInset.top = tableViewInsetTop
+        }
+     }
+
+     @objc func didHide(notification: Notification)
+     {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.memoView.contentInset.top = 0
+        })
+     }
     
     func stringToDate(_ str: String)->Date{
         let formatter = DateFormatter()
@@ -255,7 +281,6 @@ extension HRListViewController: UITableViewDataSource {
             return cell
         }
         let dataList: [[String:Any]]
-        
         if searchList.isEmpty {
             dataList = memoList
         } else {
@@ -278,11 +303,14 @@ extension HRListViewController: UITableViewDataSource {
 extension HRListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let status: (Bool, Bool) = (memoList.isEmpty, searchList.isEmpty)
-        
+
         switch status {
         case (true, true):
             return
         case (false, true):
+            if isSearched {
+                break
+            }
             let writeVC = HRWriteViewController()
             writeVC.memoData = memoList[indexPath.row]
             navigationController?.pushViewController(writeVC, animated: true)
@@ -291,6 +319,7 @@ extension HRListViewController: UITableViewDelegate {
             let writeVC = HRWriteViewController()
             writeVC.memoData = searchList[indexPath.row]
             navigationController?.pushViewController(writeVC, animated: true)
+            
             break
         }
     }
@@ -380,8 +409,10 @@ extension HRListViewController: UITableViewDelegate {
                         searchList.append(element)
                     }
                     print("result.resultDictionary : \(String(describing: result.resultDictionary))")
-                }
-                memoView.reloadData()
+                 }
+                changeContent()
+            
+                
             } catch  {
                 print("error")
             }
@@ -389,6 +420,29 @@ extension HRListViewController: UITableViewDelegate {
             print("Error : memoDB open Fail, \(memoDB.lastError())")
         }
         memoDB.close()
+    }
+    
+    func changeContent() {
+        DispatchQueue.main.async {
+            if self.searchList.isEmpty {
+                if self.memoView.contentOffset.y == 0.0 {
+                    UIView.setAnimationsEnabled(false)
+                    self.memoView.beginUpdates()
+                    self.memoView.setContentOffset(.zero, animated: false)
+                    self.memoView.endUpdates()
+                    UIView.setAnimationsEnabled(true)
+                }
+              
+                if self.memoView.contentInset.top == 0.0 {
+                    self.memoView.contentInset.top = self.tableViewInsetTop
+                }
+            } else {
+                self.memoView.contentInset.top = 0.0
+            }
+            self.memoView.layoutIfNeeded()
+
+            }
+            memoView.reloadData()
     }
     
     @objc private func changedTextFromTextField(_ textField: UITextField) {
@@ -412,9 +466,5 @@ extension HRListViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        searchList.removeAll()
     }
 }
