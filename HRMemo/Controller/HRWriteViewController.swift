@@ -9,7 +9,6 @@
 import UIKit
 
 class HRWriteViewController: BaseViewController {
-    
     var memoData: [String : Any] = [String : Any]()
     lazy var writeView: UITextView = UITextView()
     
@@ -57,9 +56,18 @@ class HRWriteViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if memoData.isEmpty {
             writeView.becomeFirstResponder()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(true)
     }
  
     override func pressRightButton(_ sender: UIButton) {

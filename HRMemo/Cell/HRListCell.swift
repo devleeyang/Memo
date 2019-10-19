@@ -32,7 +32,7 @@ class HRListCell: UITableViewCell {
     lazy var bottomLine: UIView = {
         let view: UIView = UIView()
         view.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
-        view.backgroundColor = .separatorLineColor
+        view.backgroundColor = .grayColor
         contentView.addSubview(view)
         return view
     }()

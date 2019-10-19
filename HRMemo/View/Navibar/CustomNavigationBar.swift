@@ -12,11 +12,15 @@ import SnapKit
 class CustomNavigationBar: UIView {
     lazy var leftButton: UIButton = UIButton(type: .custom)
     lazy var rightButton: UIButton = UIButton(type: .custom)
-    lazy var bottomRightButton: UIButton = UIButton(type: .custom)
     lazy var scrollView: UIScrollView = UIScrollView()
     lazy var scrollContentView: UIView = UIView()
     lazy var topBackView: UIView = UIView()
-    lazy var bottomBackView: UIView = UIView()
+    lazy var bottomSearchView: CustomSearchNavigationBar = {
+        let view: CustomSearchNavigationBar = CustomSearchNavigationBar()
+        view.backgroundColor = .navigationBarColor
+        addSubview(view)
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,12 +37,10 @@ class CustomNavigationBar: UIView {
         addSubview(scrollView)
         scrollView.addSubview(scrollContentView)
         scrollContentView.addSubview(topBackView)
-        scrollContentView.addSubview(bottomBackView)
+        scrollContentView.addSubview(bottomSearchView)
         
         topBackView.addSubview(leftButton)
         topBackView.addSubview(rightButton)
-        
-        bottomBackView.addSubview(bottomRightButton)
         
         initViews()
         initButtons()
@@ -60,30 +62,23 @@ class CustomNavigationBar: UIView {
             $0.height.equalTo(50.0)
         }
         
-        bottomBackView.snp.makeConstraints {
-            $0.leading.bottom.trailing.equalToSuperview()
+        bottomSearchView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(50.0)
             $0.top.equalTo(topBackView.snp.bottom)
         }
         
-        scrollView.contentSize = CGSize(width: self.frame.width, height: 100)
+        scrollView.contentSize = CGSize(width: frame.width, height: 100)
         scrollView.setNeedsLayout()
     }
     
     private func initButtons() {
-        
-        leftButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
         leftButton.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
             $0.width.equalTo(50)
         }
         
         rightButton.snp.makeConstraints {
-            $0.top.bottom.trailing.equalToSuperview()
-            $0.width.equalTo(50)
-        }
-        
-        bottomRightButton.snp.makeConstraints {
             $0.top.bottom.trailing.equalToSuperview()
             $0.width.equalTo(50)
         }
