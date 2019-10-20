@@ -23,6 +23,20 @@ extension UIColor {
         }
     }
     
+    static var settingContentColor: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 28.0/255.0, green: 28.0/255.0, blue: 28.0/255.0, alpha: 1.0)
+                } else {
+                    return white
+                }
+            }
+        } else {
+            return white
+        }
+    }
+    
     static var contentColor: UIColor {
         if #available(iOS 13, *) {
            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
@@ -70,6 +84,20 @@ extension UIColor {
             return UIColor { (traitCollection: UITraitCollection) -> UIColor in
                 if traitCollection.userInterfaceStyle == .dark {
                     return UIColor(red: 99.0/255.0, green: 99.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+                } else {
+                    return UIColor(red: 174.0/255.0, green: 174.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+                }
+            }
+        } else {
+            return UIColor(red: 174.0/255.0, green: 174.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+        }
+    }
+    
+    static var settingBottomLineColor: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return clear
                 } else {
                     return UIColor(red: 174.0/255.0, green: 174.0/255.0, blue: 174.0/255.0, alpha: 1.0)
                 }

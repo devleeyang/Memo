@@ -141,8 +141,10 @@ class HRListViewController: BaseViewController {
     }
     
     override func pressLeftButton(_ sender: UIButton) {
-        let settingVC = HRSettingViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
+        let settingViewController = HRSettingViewController()
+//        navigationController?.pushViewController(settingVC, animated: true)
+        let navigationController = UINavigationController(rootViewController: settingViewController)
+        present(navigationController, animated: true)
     }
     
     override func pressRightButton(_ sender: UIButton) {
@@ -164,12 +166,6 @@ class HRListViewController: BaseViewController {
     @objc func pressedWriteView(_ sender: UIButton) {
         let writeVC = HRWriteViewController()
         navigationController?.pushViewController(writeVC, animated: true)
-    }
-
-    
-    @objc func pressedSetting(_ sender: UIButton) {
-        let settingVC = HRSettingViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
     }
     
     @objc func didShow(notification: Notification)

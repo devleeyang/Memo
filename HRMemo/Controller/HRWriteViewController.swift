@@ -35,7 +35,7 @@ class HRWriteViewController: BaseViewController {
         writeView.textAlignment = .justified
         writeView.textColor = .contentTextColor
         writeView.font = UIFont.systemFont(ofSize: 21)
-        writeView.backgroundColor = UIColor.contentColor
+        writeView.backgroundColor = .contentColor
 
         view.addSubview(writeView)
         
