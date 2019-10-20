@@ -12,7 +12,7 @@ class HRListCell: UITableViewCell {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 14)
         label.numberOfLines = 1
         label.textAlignment = .left
         contentView.addSubview(label)
@@ -29,7 +29,7 @@ class HRListCell: UITableViewCell {
         return label
     }()
     
-    lazy var bottomLine: UIView = {
+    lazy private var bottomLine: UIView = {
         let view: UIView = UIView()
         view.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
         view.backgroundColor = .grayColor

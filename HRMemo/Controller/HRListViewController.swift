@@ -141,8 +141,9 @@ class HRListViewController: BaseViewController {
     }
     
     override func pressLeftButton(_ sender: UIButton) {
-        let settingVC = HRSettingViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
+        let settingViewController = HRSettingViewController()
+        let navigationController = UINavigationController(rootViewController: settingViewController)
+        present(navigationController, animated: true)
     }
     
     override func pressRightButton(_ sender: UIButton) {
@@ -164,12 +165,6 @@ class HRListViewController: BaseViewController {
     @objc func pressedWriteView(_ sender: UIButton) {
         let writeVC = HRWriteViewController()
         navigationController?.pushViewController(writeVC, animated: true)
-    }
-
-    
-    @objc func pressedSetting(_ sender: UIButton) {
-        let settingVC = HRSettingViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
     }
     
     @objc func didShow(notification: Notification)
@@ -340,41 +335,62 @@ extension HRListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            
-            let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            let docsDir = dirPath[0]
-            print(docsDir)
-            
-            self.databasePath = docsDir.appending("/memo.db")
-            let memoDB = FMDatabase(path: self.databasePath)
-            
-            if memoDB.open(){
-                let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[indexPath.row]["ID"]!)"
-                print(deleteSQL)
-                
-                do {
-                    let result = try memoDB.executeQuery(deleteSQL, values: [])
-                    while(result.next()) {
-                        if let element = result.resultDictionary as? [String : Any] {
-                            self.memoList.append(element)
-                        }
-                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
-                    }
-                    
-                    self.memoList.remove(at: indexPath.row)
-                    self.memoView.reloadData()
-                } catch  {
-                    print("error")
-                }
+            let isAlert = UserDefaults.standard.bool(forKey: "alertStatus")
+            if isAlert {
+                self.presentAlertViewController(row: indexPath.row)
             } else {
-                print("Error : memoDB open Fail, \(memoDB.lastError())")
+                self.deleteDataFromList(row: indexPath.row)
             }
-            memoDB.close()
             success(true)
-            
         })
         
         return UISwipeActionsConfiguration(actions:[deleteAction])
+    }
+    
+    private func presentAlertViewController(row: Int) {
+        let alertController = UIAlertController(title: "삭제확인", message: "정말 삭제하시나요?", preferredStyle: .alert)
+        let removeButton = UIAlertAction(title: "확인", style: .default) { _ in
+            self.deleteDataFromList(row: row)
+            alertController.dismiss(animated: true)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in
+            alertController.dismiss(animated: true)
+        }
+        alertController.addAction(removeButton)
+        alertController.addAction(cancel)
+        present(alertController, animated: true)
+    }
+    
+    private func deleteDataFromList(row: Int) {
+        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let docsDir = dirPath[0]
+        print(docsDir)
+       
+        self.databasePath = docsDir.appending("/memo.db")
+        let memoDB = FMDatabase(path: self.databasePath)
+       
+        if memoDB.open(){
+            let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[row]["ID"]!)"
+            print(deleteSQL)
+           
+            do {
+                let result = try memoDB.executeQuery(deleteSQL, values: [])
+                while(result.next()) {
+                    if let element = result.resultDictionary as? [String : Any] {
+                        self.memoList.append(element)
+                    }
+                    print("result.resultDictionary : \(String(describing: result.resultDictionary))")
+                }
+               
+                self.memoList.remove(at: row)
+                self.memoView.reloadData()
+            } catch  {
+                print("error")
+            }
+        } else {
+            print("Error : memoDB open Fail, \(memoDB.lastError())")
+        }
+        memoDB.close()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

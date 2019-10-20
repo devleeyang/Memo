@@ -11,19 +11,31 @@ import MessageUI
 
 class HRSettingViewController: BaseViewController {
     private var settingView = UITableView()
-    private let contentId = "HRContentCell"
+    private let arrowId = "HRRightArrowCell"
+    private let textId = "HRRightTextCell"
+    private let switchId = "HRRightSwitchCell"
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBar.scrollView.isScrollEnabled = false
+        settingView.backgroundColor = .contentColor
         view.addSubview(settingView)
-        settingView.register(HRContentCell.self, forCellReuseIdentifier: contentId)
+        settingView.register(HRRightArrowCell.self, forCellReuseIdentifier: arrowId)
+        settingView.register(HRRightTextCell.self, forCellReuseIdentifier: textId)
+        settingView.register(HRRightSwitchCell.self, forCellReuseIdentifier: switchId)
         settingView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(navigationBar.snp.bottom)
         }
         settingView.delegate = self
         settingView.dataSource = self
+        settingView.separatorStyle = .none
+        settingView.bounces = false
         
         navigationBar.leftButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+    }
+    
+    override func pressLeftButton(_ sender: UIButton) {
+        dismiss(animated: true)
     }
 }
 
@@ -40,21 +52,42 @@ extension HRSettingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:HRContentCell = settingView.dequeueReusableCell(withIdentifier: contentId, for: indexPath) as! HRContentCell
+        
         let index = (indexPath.section, indexPath.row)
         switch index {
         case (0, _):
-            cell.titleLabel.text = "메모"
+            let cell: HRRightSwitchCell = settingView.dequeueReusableCell(withIdentifier: switchId, for: indexPath) as! HRRightSwitchCell
+            cell.selectionStyle = .none
+            cell.titleLabel.text = "삭제 확인"
+            cell.contentLable.text = "메모를 삭제할 때 한번 더 확인합니다!"
+            cell.switchView.isOn = UserDefaults.standard.bool(forKey: "alertStatus")
+            cell.switchView.addTarget(self, action: #selector(onClickSwitch(sender:)), for: .valueChanged)
+            return cell
         case (1, _):
-            cell.titleLabel.text = "일반"
+            let cell: HRRightArrowCell = settingView.dequeueReusableCell(withIdentifier: arrowId, for: indexPath) as! HRRightArrowCell
+            cell.selectionStyle = .none
+            cell.titleLabel.text = "버그 신고 및 제안하기"
+            return cell
         case (2, 0):
-            cell.titleLabel.text = "정보"
-        case (2, 1):
+            let cell: HRRightTextCell = settingView.dequeueReusableCell(withIdentifier: textId, for: indexPath) as! HRRightTextCell
+            cell.selectionStyle = .none
             cell.titleLabel.text = "버전"
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                cell.contentLable.text = version
+            }
+            return cell
+        case (2, 1):
+            let cell: HRRightArrowCell = settingView.dequeueReusableCell(withIdentifier: arrowId, for: indexPath) as! HRRightArrowCell
+            cell.selectionStyle = .none
+            cell.titleLabel.text = "Open Source License"
+            return cell
         default:
-            break
+            return UITableViewCell()
         }
-        return cell
+    }
+    
+    @objc func onClickSwitch(sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "alertStatus")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,7 +103,11 @@ extension HRSettingViewController: UITableViewDelegate {
             break
         case (1, _):
             if MFMailComposeViewController.canSendMail() {
-                let mail = HRMailViewController.init(toRecipients: ["테스트1"], subject: "test2", body: "text3") {
+                guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String  else {
+                    return
+                }
+                
+                let mail = HRMailViewController.init(toRecipients: ["devleeyang6424@gmail.com"], subject: "Easy Memo 버그리포트 및 제안하기", body: "\n\n\n --- \n iOS \(UIDevice.current.systemVersion) / iPhone / 메모 \(version)") {
                     print("완료")
                 }
                 self.present(mail!, animated: true, completion: nil)
@@ -79,6 +116,8 @@ extension HRSettingViewController: UITableViewDelegate {
         case (2, 0):
             break
         case (2, 1):
+            let openViewController = HROpenSourceViewController()
+            navigationController?.pushViewController(openViewController, animated: false)
             break
         default:
             break

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3CFF4786DF9760648239E02A /* Pods_HRMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A60DE6F37EE66516DC657B /* Pods_HRMemo.framework */; };
 		3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */; };
-		3E235EB4224C731800AE221F /* HRContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB3224C731800AE221F /* HRContentCell.swift */; };
+		3E235EB4224C731800AE221F /* HRRightArrowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB3224C731800AE221F /* HRRightArrowCell.swift */; };
 		3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB5224CB23D00AE221F /* HRMailViewController.swift */; };
 		3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */; };
 		7389CB49D7D3759AE4A5B0FA /* Pods_HRMemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */; };
@@ -22,6 +22,10 @@
 		EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */; };
 		EE20153221A2C4A6006D9746 /* HRMemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153121A2C4A6006D9746 /* HRMemoTests.swift */; };
 		EE20153D21A2C4A6006D9746 /* HRMemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */; };
+		EE215944235C4963007FC1F4 /* HRRightTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE215943235C4963007FC1F4 /* HRRightTextCell.swift */; };
+		EE215946235C4A97007FC1F4 /* HRRightSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE215945235C4A97007FC1F4 /* HRRightSwitchCell.swift */; };
+		EE215948235C58FE007FC1F4 /* HROpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE215947235C58FE007FC1F4 /* HROpenSourceViewController.swift */; };
+		EE21594A235C6B8F007FC1F4 /* ACKNOWLEDGEMENT.md in Resources */ = {isa = PBXBuildFile; fileRef = EE215949235C596C007FC1F4 /* ACKNOWLEDGEMENT.md */; };
 		EE3799382354D6BD00065BA4 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */; };
 		EE3ECFC72350B5430008526C /* HREmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3ECFC62350B5430008526C /* HREmptyCell.swift */; };
 		EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D1225262B200422391 /* BaseViewController.swift */; };
@@ -79,7 +83,7 @@
 /* Begin PBXFileReference section */
 		0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRSettingViewController.swift; sourceTree = "<group>"; };
-		3E235EB3224C731800AE221F /* HRContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRContentCell.swift; sourceTree = "<group>"; };
+		3E235EB3224C731800AE221F /* HRRightArrowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRRightArrowCell.swift; sourceTree = "<group>"; };
 		3E235EB5224CB23D00AE221F /* HRMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMailViewController.swift; sourceTree = "<group>"; };
 		3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		708CB5AA0DE323565A2906E1 /* Pods_HRMemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +108,10 @@
 		EE20153821A2C4A6006D9746 /* HRMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HRMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMemoUITests.swift; sourceTree = "<group>"; };
 		EE20153E21A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE215943235C4963007FC1F4 /* HRRightTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRRightTextCell.swift; sourceTree = "<group>"; };
+		EE215945235C4A97007FC1F4 /* HRRightSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRRightSwitchCell.swift; sourceTree = "<group>"; };
+		EE215947235C58FE007FC1F4 /* HROpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HROpenSourceViewController.swift; sourceTree = "<group>"; };
+		EE215949235C596C007FC1F4 /* ACKNOWLEDGEMENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ACKNOWLEDGEMENT.md; sourceTree = "<group>"; };
 		EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		EE3ECFC62350B5430008526C /* HREmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HREmptyCell.swift; sourceTree = "<group>"; };
 		EE50C2D1225262B200422391 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +195,9 @@
 			isa = PBXGroup;
 			children = (
 				EE0DF29621A405EC00C4D754 /* HRListCell.swift */,
-				3E235EB3224C731800AE221F /* HRContentCell.swift */,
+				3E235EB3224C731800AE221F /* HRRightArrowCell.swift */,
+				EE215945235C4A97007FC1F4 /* HRRightSwitchCell.swift */,
+				EE215943235C4963007FC1F4 /* HRRightTextCell.swift */,
 				EE3ECFC62350B5430008526C /* HREmptyCell.swift */,
 			);
 			path = Cell;
@@ -230,6 +240,7 @@
 				EE20152821A2C4A6006D9746 /* Info.plist */,
 				EECC744321A2D0E400F17F3F /* Libs */,
 				EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */,
+				EE215949235C596C007FC1F4 /* ACKNOWLEDGEMENT.md */,
 			);
 			path = HRMemo;
 			sourceTree = "<group>";
@@ -327,6 +338,7 @@
 				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
 				3E235EB5224CB23D00AE221F /* HRMailViewController.swift */,
 				EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */,
+				EE215947235C58FE007FC1F4 /* HROpenSourceViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -443,6 +455,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE21594A235C6B8F007FC1F4 /* ACKNOWLEDGEMENT.md in Resources */,
 				EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */,
 				EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */,
 			);
@@ -569,12 +582,15 @@
 				EE82EB492357829A005DF22A /* UIViewController+Extension.swift in Sources */,
 				EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */,
 				EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */,
+				EE215946235C4A97007FC1F4 /* HRRightSwitchCell.swift in Sources */,
 				EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */,
-				3E235EB4224C731800AE221F /* HRContentCell.swift in Sources */,
+				3E235EB4224C731800AE221F /* HRRightArrowCell.swift in Sources */,
 				EE3799382354D6BD00065BA4 /* UIColor+Extension.swift in Sources */,
 				EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */,
 				EECC746021A2D8C500F17F3F /* FMDatabaseAdditions.m in Sources */,
 				3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */,
+				EE215948235C58FE007FC1F4 /* HROpenSourceViewController.swift in Sources */,
+				EE215944235C4963007FC1F4 /* HRRightTextCell.swift in Sources */,
 				EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */,
 				EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */,
 				EE7C1CBC22D86D4900810AE8 /* NavigationBarScroll.swift in Sources */,
@@ -760,7 +776,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = GQ2YK62N76;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = HRMemo/Info.plist;
@@ -785,7 +801,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = GQ2YK62N76;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
