@@ -321,19 +321,31 @@ extension HRListViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard
+            !isSearched,
+            !memoList.isEmpty else {
+            return nil
+        }
         let shareAction = UIContextualAction(style: .normal, title:  "공유", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            success(true)
-            let text = "공유할 내용"
-            let textShare = [text]
+            guard let contentString = self.memoList[indexPath.row]["CONTENT"] as? String else {
+                return
+            }
+            let textShare = [contentString]
             let activityVC = UIActivityViewController(activityItems: textShare, applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)
-            
+            success(true)
         })
         
         return UISwipeActionsConfiguration(actions:[shareAction])
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard
+            !isSearched,
+            !memoList.isEmpty else {
+            return nil
+        }
+        
         let deleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             let isAlert = UserDefaults.standard.bool(forKey: "alertStatus")
             if isAlert {
