@@ -64,7 +64,6 @@ class HRIntroViewController: UIViewController {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(leftLabel.snp.trailing).offset(6.0)
         }
-        
         perform(#selector(startAnimationFromLabel), with: nil, afterDelay: 1.0)
     }
     

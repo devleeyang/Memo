@@ -106,4 +106,18 @@ extension UIColor {
             return UIColor(red: 174.0/255.0, green: 174.0/255.0, blue: 174.0/255.0, alpha: 1.0)
         }
     }
+    
+    static var switchColor: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 50.0/255.0, green: 201.0/255.0, blue: 88.0/255.0, alpha: 1.0)
+                } else {
+                    return UIColor(red: 33.0/255.0, green: 144.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+                }
+            }
+        } else {
+            return UIColor(red: 33.0/255.0, green: 144.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        }
+    }
 }

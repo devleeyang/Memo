@@ -33,6 +33,10 @@ class HRSettingViewController: BaseViewController {
         
         navigationBar.leftButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
     }
+    
+    override func pressLeftButton(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
 }
 
 extension HRSettingViewController: UITableViewDataSource {
@@ -56,6 +60,8 @@ extension HRSettingViewController: UITableViewDataSource {
             cell.selectionStyle = .none
             cell.titleLabel.text = "삭제 확인"
             cell.contentLable.text = "메모를 삭제할 때 한번 더 확인합니다!"
+            cell.switchView.isOn = UserDefaults.standard.bool(forKey: "alertStatus")
+            cell.switchView.addTarget(self, action: #selector(onClickSwitch(sender:)), for: .valueChanged)
             return cell
         case (1, _):
             let cell: HRRightArrowCell = settingView.dequeueReusableCell(withIdentifier: arrowId, for: indexPath) as! HRRightArrowCell
@@ -78,6 +84,10 @@ extension HRSettingViewController: UITableViewDataSource {
         default:
             return UITableViewCell()
         }
+    }
+    
+    @objc func onClickSwitch(sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "alertStatus")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

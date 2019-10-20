@@ -36,9 +36,9 @@ class HRRightSwitchCell: UITableViewCell {
         stackView.addArrangedSubview(label)
         return label
     }()
-    lazy private var swith: UISwitch = {
+    lazy var switchView: UISwitch = {
         let swith = UISwitch()
-        swith.onTintColor = UIColor(red: 50.0/255.0, green: 201.0/255.0, blue: 88.0/255.0, alpha: 1.0)
+        swith.onTintColor = .switchColor
         contentView.addSubview(swith)
         return swith
     }()
@@ -58,10 +58,10 @@ class HRRightSwitchCell: UITableViewCell {
             $0.top.equalToSuperview().offset(10)
             $0.bottom.equalToSuperview().offset(-10.0)
             $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalTo(swith.snp.leading).offset(10)
+            $0.trailing.equalTo(switchView.snp.leading).offset(10)
         }
        
-        swith.snp.makeConstraints {
+        switchView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-10)
             $0.leading.equalTo(stackView.snp.trailing).offset(-10)
