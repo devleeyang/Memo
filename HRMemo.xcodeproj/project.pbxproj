@@ -1,0 +1,947 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3CFF4786DF9760648239E02A /* Pods_HRMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A60DE6F37EE66516DC657B /* Pods_HRMemo.framework */; };
+		3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */; };
+		3E235EB4224C731800AE221F /* HRRightArrowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB3224C731800AE221F /* HRRightArrowCell.swift */; };
+		3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E235EB5224CB23D00AE221F /* HRMailViewController.swift */; };
+		3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */; };
+		7389CB49D7D3759AE4A5B0FA /* Pods_HRMemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */; };
+		CDD5C458227AC2AB00062C60 /* CustomSearchNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */; };
+		E9E0EE5B4BEDD99C31E39DB7 /* Pods_HRMemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708CB5AA0DE323565A2906E1 /* Pods_HRMemoUITests.framework */; };
+		EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29121A3F63200C4D754 /* HRListViewController.swift */; };
+		EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */; };
+		EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DF29621A405EC00C4D754 /* HRListCell.swift */; };
+		EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE20152321A2C4A6006D9746 /* Assets.xcassets */; };
+		EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */; };
+		EE20153221A2C4A6006D9746 /* HRMemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153121A2C4A6006D9746 /* HRMemoTests.swift */; };
+		EE20153D21A2C4A6006D9746 /* HRMemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */; };
+		EE215944235C4963007FC1F4 /* HRRightTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE215943235C4963007FC1F4 /* HRRightTextCell.swift */; };
+		EE215946235C4A97007FC1F4 /* HRRightSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE215945235C4A97007FC1F4 /* HRRightSwitchCell.swift */; };
+		EE215948235C58FE007FC1F4 /* HROpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE215947235C58FE007FC1F4 /* HROpenSourceViewController.swift */; };
+		EE21594A235C6B8F007FC1F4 /* ACKNOWLEDGEMENT.md in Resources */ = {isa = PBXBuildFile; fileRef = EE215949235C596C007FC1F4 /* ACKNOWLEDGEMENT.md */; };
+		EE3799382354D6BD00065BA4 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */; };
+		EE3ECFC72350B5430008526C /* HREmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3ECFC62350B5430008526C /* HREmptyCell.swift */; };
+		EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D1225262B200422391 /* BaseViewController.swift */; };
+		EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50C2D3225263C100422391 /* CustomTopView.swift */; };
+		EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */; };
+		EE7C1CBC22D86D4900810AE8 /* NavigationBarScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */; };
+		EE82EB4723576EA1005DF22A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE82EB4623576EA1005DF22A /* CustomTextField.swift */; };
+		EE82EB492357829A005DF22A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE82EB482357829A005DF22A /* UIViewController+Extension.swift */; };
+		EECC744221A2D02500F17F3F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EECC744121A2D02500F17F3F /* libsqlite3.tbd */; };
+		EECC745C21A2D88A00F17F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20151C21A2C4A3006D9746 /* AppDelegate.swift */; };
+		EECC745D21A2D8C500F17F3F /* FMDatabase.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744C21A2D7A100F17F3F /* FMDatabase.h */; };
+		EECC745E21A2D8C500F17F3F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC745321A2D7A200F17F3F /* FMDatabase.m */; };
+		EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744A21A2D7A100F17F3F /* FMDatabaseAdditions.h */; };
+		EECC746021A2D8C500F17F3F /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC744B21A2D7A100F17F3F /* FMDatabaseAdditions.m */; };
+		EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744921A2D7A100F17F3F /* FMDatabasePool.h */; };
+		EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC745021A2D7A100F17F3F /* FMDatabasePool.m */; };
+		EECC746321A2D8C500F17F3F /* FMDatabaseQueue.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744E21A2D7A100F17F3F /* FMDatabaseQueue.h */; };
+		EECC746421A2D8C500F17F3F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC745121A2D7A200F17F3F /* FMDatabaseQueue.m */; };
+		EECC746521A2D8C500F17F3F /* FMDB.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744F21A2D7A100F17F3F /* FMDB.h */; };
+		EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */ = {isa = PBXBuildFile; fileRef = EECC744D21A2D7A100F17F3F /* FMResultSet.h */; };
+		EECC746721A2D8C500F17F3F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC745421A2D7A200F17F3F /* FMResultSet.m */; };
+		EECD27AC23537CA800C14ADA /* HRIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE20152E21A2C4A6006D9746 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE20151121A2C4A3006D9746 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE20151821A2C4A3006D9746;
+			remoteInfo = HRMemo;
+		};
+		EE20153921A2C4A6006D9746 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE20151121A2C4A3006D9746 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE20151821A2C4A3006D9746;
+			remoteInfo = HRMemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CDD5C456227ABEFB00062C60 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRSettingViewController.swift; sourceTree = "<group>"; };
+		3E235EB3224C731800AE221F /* HRRightArrowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRRightArrowCell.swift; sourceTree = "<group>"; };
+		3E235EB5224CB23D00AE221F /* HRMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMailViewController.swift; sourceTree = "<group>"; };
+		3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		708CB5AA0DE323565A2906E1 /* Pods_HRMemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		712D6539E63DF6B036C7BCC8 /* Pods-HRMemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoTests/Pods-HRMemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9831686827863F81D93C13C2 /* Pods-HRMemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoTests/Pods-HRMemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		A93D94B6896609CE78E9D7F9 /* Pods-HRMemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo.debug.xcconfig"; sourceTree = "<group>"; };
+		ADBD0542779E4ACA3607D870 /* Pods-HRMemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoUITests/Pods-HRMemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchNavigationBar.swift; sourceTree = "<group>"; };
+		D6A60DE6F37EE66516DC657B /* Pods_HRMemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HRMemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E12F0C5A0997A2C85D1A7DB7 /* Pods-HRMemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemoUITests/Pods-HRMemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE0DF29121A3F63200C4D754 /* HRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListViewController.swift; sourceTree = "<group>"; };
+		EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRWriteViewController.swift; sourceTree = "<group>"; };
+		EE0DF29621A405EC00C4D754 /* HRListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRListCell.swift; sourceTree = "<group>"; };
+		EE20151921A2C4A3006D9746 /* Easy Memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy Memo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE20151C21A2C4A3006D9746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE20152321A2C4A6006D9746 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE20152621A2C4A6006D9746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE20152821A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE20152D21A2C4A6006D9746 /* HRMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HRMemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE20153121A2C4A6006D9746 /* HRMemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMemoTests.swift; sourceTree = "<group>"; };
+		EE20153321A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE20153821A2C4A6006D9746 /* HRMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HRMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRMemoUITests.swift; sourceTree = "<group>"; };
+		EE20153E21A2C4A6006D9746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE215943235C4963007FC1F4 /* HRRightTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRRightTextCell.swift; sourceTree = "<group>"; };
+		EE215945235C4A97007FC1F4 /* HRRightSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRRightSwitchCell.swift; sourceTree = "<group>"; };
+		EE215947235C58FE007FC1F4 /* HROpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HROpenSourceViewController.swift; sourceTree = "<group>"; };
+		EE215949235C596C007FC1F4 /* ACKNOWLEDGEMENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ACKNOWLEDGEMENT.md; sourceTree = "<group>"; };
+		EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		EE3ECFC62350B5430008526C /* HREmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HREmptyCell.swift; sourceTree = "<group>"; };
+		EE50C2D1225262B200422391 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EE50C2D3225263C100422391 /* CustomTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopView.swift; sourceTree = "<group>"; };
+		EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
+		EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarScroll.swift; sourceTree = "<group>"; };
+		EE82EB4623576EA1005DF22A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		EE82EB482357829A005DF22A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		EECC743F21A2CFEA00F17F3F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		EECC744121A2D02500F17F3F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		EECC744621A2D17C00F17F3F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		EECC744921A2D7A100F17F3F /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		EECC744A21A2D7A100F17F3F /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		EECC744B21A2D7A100F17F3F /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		EECC744C21A2D7A100F17F3F /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		EECC744D21A2D7A100F17F3F /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		EECC744E21A2D7A100F17F3F /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		EECC744F21A2D7A100F17F3F /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		EECC745021A2D7A100F17F3F /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		EECC745121A2D7A200F17F3F /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		EECC745221A2D7A200F17F3F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EECC745321A2D7A200F17F3F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		EECC745421A2D7A200F17F3F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRIntroViewController.swift; sourceTree = "<group>"; };
+		FE5C94799CAB33A5563DB5A8 /* Pods-HRMemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HRMemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE20151621A2C4A3006D9746 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EECC744221A2D02500F17F3F /* libsqlite3.tbd in Frameworks */,
+				3CFF4786DF9760648239E02A /* Pods_HRMemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE20152A21A2C4A6006D9746 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7389CB49D7D3759AE4A5B0FA /* Pods_HRMemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE20153521A2C4A6006D9746 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E0EE5B4BEDD99C31E39DB7 /* Pods_HRMemoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1985C382914321C74A7D69C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A93D94B6896609CE78E9D7F9 /* Pods-HRMemo.debug.xcconfig */,
+				FE5C94799CAB33A5563DB5A8 /* Pods-HRMemo.release.xcconfig */,
+				712D6539E63DF6B036C7BCC8 /* Pods-HRMemoTests.debug.xcconfig */,
+				9831686827863F81D93C13C2 /* Pods-HRMemoTests.release.xcconfig */,
+				E12F0C5A0997A2C85D1A7DB7 /* Pods-HRMemoUITests.debug.xcconfig */,
+				ADBD0542779E4ACA3607D870 /* Pods-HRMemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E3D9C6E224A040D000387FE /* Navibar */ = {
+			isa = PBXGroup;
+			children = (
+				EE50C2D3225263C100422391 /* CustomTopView.swift */,
+				3E3D9C6F224A04EF000387FE /* CustomNavigationBar.swift */,
+				CDD5C457227AC2AB00062C60 /* CustomSearchNavigationBar.swift */,
+			);
+			path = Navibar;
+			sourceTree = "<group>";
+		};
+		EE0DF29521A405BC00C4D754 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EE0DF29621A405EC00C4D754 /* HRListCell.swift */,
+				3E235EB3224C731800AE221F /* HRRightArrowCell.swift */,
+				EE215945235C4A97007FC1F4 /* HRRightSwitchCell.swift */,
+				EE215943235C4963007FC1F4 /* HRRightTextCell.swift */,
+				EE3ECFC62350B5430008526C /* HREmptyCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EE20151021A2C4A3006D9746 = {
+			isa = PBXGroup;
+			children = (
+				EE20151B21A2C4A3006D9746 /* HRMemo */,
+				EE20153021A2C4A6006D9746 /* HRMemoTests */,
+				EE20153B21A2C4A6006D9746 /* HRMemoUITests */,
+				EE20151A21A2C4A3006D9746 /* Products */,
+				EECC743E21A2CFEA00F17F3F /* Frameworks */,
+				1985C382914321C74A7D69C1 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		EE20151A21A2C4A3006D9746 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE20151921A2C4A3006D9746 /* Easy Memo.app */,
+				EE20152D21A2C4A6006D9746 /* HRMemoTests.xctest */,
+				EE20153821A2C4A6006D9746 /* HRMemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE20151B21A2C4A3006D9746 /* HRMemo */ = {
+			isa = PBXGroup;
+			children = (
+				EECC744621A2D17C00F17F3F /* Bridging-Header.h */,
+				EE20151C21A2C4A3006D9746 /* AppDelegate.swift */,
+				EE50C2D1225262B200422391 /* BaseViewController.swift */,
+				EECD27AD23537CAF00C14ADA /* Controller */,
+				EE0DF29521A405BC00C4D754 /* Cell */,
+				EE82EB4423576E4F005DF22A /* View */,
+				EE79E8C6234EFE6800C28753 /* Extension */,
+				EE20152321A2C4A6006D9746 /* Assets.xcassets */,
+				EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */,
+				EE20152821A2C4A6006D9746 /* Info.plist */,
+				EECC744321A2D0E400F17F3F /* Libs */,
+				EE7C1CBB22D86D4900810AE8 /* NavigationBarScroll.swift */,
+				EE215949235C596C007FC1F4 /* ACKNOWLEDGEMENT.md */,
+			);
+			path = HRMemo;
+			sourceTree = "<group>";
+		};
+		EE20153021A2C4A6006D9746 /* HRMemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE20153121A2C4A6006D9746 /* HRMemoTests.swift */,
+				EE20153321A2C4A6006D9746 /* Info.plist */,
+			);
+			path = HRMemoTests;
+			sourceTree = "<group>";
+		};
+		EE20153B21A2C4A6006D9746 /* HRMemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE20153C21A2C4A6006D9746 /* HRMemoUITests.swift */,
+				EE20153E21A2C4A6006D9746 /* Info.plist */,
+			);
+			path = HRMemoUITests;
+			sourceTree = "<group>";
+		};
+		EE79E8C6234EFE6800C28753 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EE79E8C7234EFF0F00C28753 /* ScrollView+Extension.swift */,
+				EE3799372354D6BD00065BA4 /* UIColor+Extension.swift */,
+				EE82EB482357829A005DF22A /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EE82EB4423576E4F005DF22A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE82EB4523576E6E005DF22A /* TextField */,
+				3E3D9C6E224A040D000387FE /* Navibar */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EE82EB4523576E6E005DF22A /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				EE82EB4623576EA1005DF22A /* CustomTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		EECC743E21A2CFEA00F17F3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EECC744121A2D02500F17F3F /* libsqlite3.tbd */,
+				EECC743F21A2CFEA00F17F3F /* libsqlite3.0.tbd */,
+				D6A60DE6F37EE66516DC657B /* Pods_HRMemo.framework */,
+				0F54135CFB786F198A2DF578 /* Pods_HRMemoTests.framework */,
+				708CB5AA0DE323565A2906E1 /* Pods_HRMemoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EECC744321A2D0E400F17F3F /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				EECC745B21A2D7AE00F17F3F /* fmdb */,
+			);
+			name = Libs;
+			path = ../Libs;
+			sourceTree = "<group>";
+		};
+		EECC745B21A2D7AE00F17F3F /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				EECC744C21A2D7A100F17F3F /* FMDatabase.h */,
+				EECC745321A2D7A200F17F3F /* FMDatabase.m */,
+				EECC744A21A2D7A100F17F3F /* FMDatabaseAdditions.h */,
+				EECC744B21A2D7A100F17F3F /* FMDatabaseAdditions.m */,
+				EECC744921A2D7A100F17F3F /* FMDatabasePool.h */,
+				EECC745021A2D7A100F17F3F /* FMDatabasePool.m */,
+				EECC744E21A2D7A100F17F3F /* FMDatabaseQueue.h */,
+				EECC745121A2D7A200F17F3F /* FMDatabaseQueue.m */,
+				EECC744F21A2D7A100F17F3F /* FMDB.h */,
+				EECC744D21A2D7A100F17F3F /* FMResultSet.h */,
+				EECC745421A2D7A200F17F3F /* FMResultSet.m */,
+				EECC745221A2D7A200F17F3F /* Info.plist */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		EECD27AD23537CAF00C14ADA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE0DF29121A3F63200C4D754 /* HRListViewController.swift */,
+				3E1BBDD5224C6A5700F6ED22 /* HRSettingViewController.swift */,
+				EE0DF29321A3F64900C4D754 /* HRWriteViewController.swift */,
+				3E235EB5224CB23D00AE221F /* HRMailViewController.swift */,
+				EECD27AB23537CA800C14ADA /* HRIntroViewController.swift */,
+				EE215947235C58FE007FC1F4 /* HROpenSourceViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE20151821A2C4A3006D9746 /* HRMemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE20154121A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemo" */;
+			buildPhases = (
+				EBCDF2366D2DBCEC8D803A3A /* [CP] Check Pods Manifest.lock */,
+				EE20151521A2C4A3006D9746 /* Sources */,
+				EE20151621A2C4A3006D9746 /* Frameworks */,
+				EE20151721A2C4A3006D9746 /* Resources */,
+				CDD5C456227ABEFB00062C60 /* Embed Frameworks */,
+				998913167EBD4AC05D8B3EFC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HRMemo;
+			productName = HRMemo;
+			productReference = EE20151921A2C4A3006D9746 /* Easy Memo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE20152C21A2C4A6006D9746 /* HRMemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE20154421A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemoTests" */;
+			buildPhases = (
+				5C6F1DD65261A1A067A72FC5 /* [CP] Check Pods Manifest.lock */,
+				EE20152921A2C4A6006D9746 /* Sources */,
+				EE20152A21A2C4A6006D9746 /* Frameworks */,
+				EE20152B21A2C4A6006D9746 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE20152F21A2C4A6006D9746 /* PBXTargetDependency */,
+			);
+			name = HRMemoTests;
+			productName = HRMemoTests;
+			productReference = EE20152D21A2C4A6006D9746 /* HRMemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE20153721A2C4A6006D9746 /* HRMemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE20154721A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemoUITests" */;
+			buildPhases = (
+				4D74DB728BAE376A2E6FC981 /* [CP] Check Pods Manifest.lock */,
+				EE20153421A2C4A6006D9746 /* Sources */,
+				EE20153521A2C4A6006D9746 /* Frameworks */,
+				EE20153621A2C4A6006D9746 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE20153A21A2C4A6006D9746 /* PBXTargetDependency */,
+			);
+			name = HRMemoUITests;
+			productName = HRMemoUITests;
+			productReference = EE20153821A2C4A6006D9746 /* HRMemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE20151121A2C4A3006D9746 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "양혜리";
+				TargetAttributes = {
+					EE20151821A2C4A3006D9746 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
+					};
+					EE20152C21A2C4A6006D9746 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
+						TestTargetID = EE20151821A2C4A3006D9746;
+					};
+					EE20153721A2C4A6006D9746 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
+						TestTargetID = EE20151821A2C4A3006D9746;
+					};
+				};
+			};
+			buildConfigurationList = EE20151421A2C4A3006D9746 /* Build configuration list for PBXProject "HRMemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE20151021A2C4A3006D9746;
+			productRefGroup = EE20151A21A2C4A3006D9746 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE20151821A2C4A3006D9746 /* HRMemo */,
+				EE20152C21A2C4A6006D9746 /* HRMemoTests */,
+				EE20153721A2C4A6006D9746 /* HRMemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE20151721A2C4A3006D9746 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE21594A235C6B8F007FC1F4 /* ACKNOWLEDGEMENT.md in Resources */,
+				EE20152721A2C4A6006D9746 /* LaunchScreen.storyboard in Resources */,
+				EE20152421A2C4A6006D9746 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE20152B21A2C4A6006D9746 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE20153621A2C4A6006D9746 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D74DB728BAE376A2E6FC981 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HRMemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C6F1DD65261A1A067A72FC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HRMemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		998913167EBD4AC05D8B3EFC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HRMemo/Pods-HRMemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBCDF2366D2DBCEC8D803A3A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HRMemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE20151521A2C4A3006D9746 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE82EB4723576EA1005DF22A /* CustomTextField.swift in Sources */,
+				EECC745D21A2D8C500F17F3F /* FMDatabase.h in Sources */,
+				EE0DF29821A405EC00C4D754 /* HRListCell.swift in Sources */,
+				EECC745E21A2D8C500F17F3F /* FMDatabase.m in Sources */,
+				EE82EB492357829A005DF22A /* UIViewController+Extension.swift in Sources */,
+				EE0DF29221A3F63200C4D754 /* HRListViewController.swift in Sources */,
+				EECC745F21A2D8C500F17F3F /* FMDatabaseAdditions.h in Sources */,
+				EE215946235C4A97007FC1F4 /* HRRightSwitchCell.swift in Sources */,
+				EE50C2D2225262B200422391 /* BaseViewController.swift in Sources */,
+				3E235EB4224C731800AE221F /* HRRightArrowCell.swift in Sources */,
+				EE3799382354D6BD00065BA4 /* UIColor+Extension.swift in Sources */,
+				EE79E8C8234EFF0F00C28753 /* ScrollView+Extension.swift in Sources */,
+				EECC746021A2D8C500F17F3F /* FMDatabaseAdditions.m in Sources */,
+				3E1BBDD6224C6A5800F6ED22 /* HRSettingViewController.swift in Sources */,
+				EE215948235C58FE007FC1F4 /* HROpenSourceViewController.swift in Sources */,
+				EE215944235C4963007FC1F4 /* HRRightTextCell.swift in Sources */,
+				EE50C2D4225263C100422391 /* CustomTopView.swift in Sources */,
+				EECC746121A2D8C500F17F3F /* FMDatabasePool.h in Sources */,
+				EE7C1CBC22D86D4900810AE8 /* NavigationBarScroll.swift in Sources */,
+				EE3ECFC72350B5430008526C /* HREmptyCell.swift in Sources */,
+				3E235EB6224CB23D00AE221F /* HRMailViewController.swift in Sources */,
+				CDD5C458227AC2AB00062C60 /* CustomSearchNavigationBar.swift in Sources */,
+				EECC746221A2D8C500F17F3F /* FMDatabasePool.m in Sources */,
+				EECC746321A2D8C500F17F3F /* FMDatabaseQueue.h in Sources */,
+				EECC746421A2D8C500F17F3F /* FMDatabaseQueue.m in Sources */,
+				EECD27AC23537CA800C14ADA /* HRIntroViewController.swift in Sources */,
+				EECC746521A2D8C500F17F3F /* FMDB.h in Sources */,
+				EECC746621A2D8C500F17F3F /* FMResultSet.h in Sources */,
+				3E3D9C70224A04EF000387FE /* CustomNavigationBar.swift in Sources */,
+				EECC746721A2D8C500F17F3F /* FMResultSet.m in Sources */,
+				EECC745C21A2D88A00F17F3F /* AppDelegate.swift in Sources */,
+				EE0DF29421A3F64900C4D754 /* HRWriteViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE20152921A2C4A6006D9746 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE20153221A2C4A6006D9746 /* HRMemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE20153421A2C4A6006D9746 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE20153D21A2C4A6006D9746 /* HRMemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE20152F21A2C4A6006D9746 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE20151821A2C4A3006D9746 /* HRMemo */;
+			targetProxy = EE20152E21A2C4A6006D9746 /* PBXContainerItemProxy */;
+		};
+		EE20153A21A2C4A6006D9746 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE20151821A2C4A3006D9746 /* HRMemo */;
+			targetProxy = EE20153921A2C4A6006D9746 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EE20152521A2C4A6006D9746 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE20152621A2C4A6006D9746 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE20153F21A2C4A6006D9746 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EE20154021A2C4A6006D9746 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE20154221A2C4A6006D9746 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A93D94B6896609CE78E9D7F9 /* Pods-HRMemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = GQ2YK62N76;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HRMemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemo;
+				PRODUCT_NAME = "Easy Memo";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EE20154321A2C4A6006D9746 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE5C94799CAB33A5563DB5A8 /* Pods-HRMemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GQ2YK62N76;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = HRMemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemo;
+				PRODUCT_NAME = "Easy Memo";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PROJECT}/Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		EE20154521A2C4A6006D9746 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 712D6539E63DF6B036C7BCC8 /* Pods-HRMemoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HRMemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HRMemo.app/HRMemo";
+			};
+			name = Debug;
+		};
+		EE20154621A2C4A6006D9746 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9831686827863F81D93C13C2 /* Pods-HRMemoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HRMemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HRMemo.app/HRMemo";
+			};
+			name = Release;
+		};
+		EE20154821A2C4A6006D9746 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E12F0C5A0997A2C85D1A7DB7 /* Pods-HRMemoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HRMemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HRMemo;
+			};
+			name = Debug;
+		};
+		EE20154921A2C4A6006D9746 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADBD0542779E4ACA3607D870 /* Pods-HRMemoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HRMemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hr.HRMemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HRMemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE20151421A2C4A3006D9746 /* Build configuration list for PBXProject "HRMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE20153F21A2C4A6006D9746 /* Debug */,
+				EE20154021A2C4A6006D9746 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE20154121A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE20154221A2C4A6006D9746 /* Debug */,
+				EE20154321A2C4A6006D9746 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE20154421A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE20154521A2C4A6006D9746 /* Debug */,
+				EE20154621A2C4A6006D9746 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE20154721A2C4A6006D9746 /* Build configuration list for PBXNativeTarget "HRMemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE20154821A2C4A6006D9746 /* Debug */,
+				EE20154921A2C4A6006D9746 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE20151121A2C4A3006D9746 /* Project object */;
+}
