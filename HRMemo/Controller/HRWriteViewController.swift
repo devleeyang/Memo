@@ -106,16 +106,13 @@ class HRWriteViewController: BaseViewController {
         
         if memo.open(){
             let insertSQL = "INSERT INTO MEMO (CONTENT, DATE, TEMPT) values ('\(text)', DATETIME('now'), FALSE)"
-            print(insertSQL)
             let result = memo.executeUpdate(insertSQL, withArgumentsIn: [])
             if !result{
-                print("Error : memoDB add Fail, \(memo.lastError())")
             } else {
                 self.navigationController?.popViewController(animated: true)
             }
             memo.close()
         } else {
-            print("Error : memoDB open Fail, \(memo.lastError())")
         }
     }
     
@@ -126,13 +123,11 @@ class HRWriteViewController: BaseViewController {
                 print(updateSQL)
                 let result = memo.executeUpdate(updateSQL, withArgumentsIn: [])
                 if !result{
-                    print("Error : memoDB add Fail, \(memo.lastError())")
                 } else {
                     self.navigationController?.popViewController(animated: true)
                 }
             }
         } else {
-            print("Error : memoDB open Fail, \(memo.lastError())")
         }
     }
     

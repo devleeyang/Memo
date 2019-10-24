@@ -108,7 +108,6 @@ extension HRSettingViewController: UITableViewDelegate {
                 }
                 
                 let mail = HRMailViewController.init(toRecipients: ["devleeyang6424@gmail.com"], subject: "Easy Memo 버그리포트 및 제안하기", body: "\n\n\n --- \n iOS \(UIDevice.current.systemVersion) / iPhone / 메모 \(version)") {
-                    print("완료")
                 }
                 self.present(mail!, animated: true, completion: nil)
             }

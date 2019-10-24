@@ -81,7 +81,6 @@ class HRListViewController: BaseViewController {
         let fileMgr = FileManager.default
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let docsDir = dirPath[0]
-        print(docsDir)
         
         databasePath = docsDir.appending("/memo.db")
         let memoDB = FMDatabase(path: databasePath)
@@ -89,15 +88,11 @@ class HRListViewController: BaseViewController {
             if memoDB.open() {
                 let sql_stmt = "CREATE TABLE IF NOT EXISTS MEMO ( ID INTEGER PRIMARY KEY AUTOINCREMENT, CONTENT TEXT, DATE DATETIME, TEMPT BOOL DEFAULT FALSE )"
                 if !memoDB.executeStatements(sql_stmt){
-                    print("Error : memoDB execute Fail, \(memoDB.lastError())")
                 }
                 memoDB.close()
-                
             } else {
-                print("Error : memoDB open Fail, \(memoDB.lastError())")
             }
         } else {
-            print("memoDB is exist")
         }
         memoDB.close()
         
@@ -125,13 +120,10 @@ class HRListViewController: BaseViewController {
                         if let element = result.resultDictionary as? [String : Any] {
                             memoList.append(element)
                         }
-                        print("result.resultDictionary : \(String(describing: result.resultDictionary))")
                     }
                 } catch  {
-                    print("error")
                 }
             } else {
-                print("Error : memoDB open Fail, \(memoDB.lastError())")
             }
             memoDB.close()
             memoView.reloadData()
@@ -271,7 +263,7 @@ extension HRListViewController: UITableViewDataSource {
         
         if searchList.isEmpty && isSearched {
             let cell: HREmptyCell = memoView.dequeueReusableCell(withIdentifier: emptyId, for: indexPath) as! HREmptyCell
-            cell.content = "검색된 메모가 없어요 ㅠ.ㅠ"
+            cell.content = "검색된 메모가 없어요"
             cell.selectionStyle = .none
             return cell
         }
@@ -376,31 +368,24 @@ extension HRListViewController: UITableViewDelegate {
     private func deleteDataFromList(row: Int) {
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let docsDir = dirPath[0]
-        print(docsDir)
-       
         self.databasePath = docsDir.appending("/memo.db")
         let memoDB = FMDatabase(path: self.databasePath)
        
         if memoDB.open(){
             let deleteSQL = "DELETE FROM MEMO WHERE ID = \(self.memoList[row]["ID"]!)"
-            print(deleteSQL)
-           
             do {
                 let result = try memoDB.executeQuery(deleteSQL, values: [])
                 while(result.next()) {
                     if let element = result.resultDictionary as? [String : Any] {
                         self.memoList.append(element)
                     }
-                    print("result.resultDictionary : \(String(describing: result.resultDictionary))")
                 }
                
                 self.memoList.remove(at: row)
                 self.memoView.reloadData()
             } catch  {
-                print("error")
             }
         } else {
-            print("Error : memoDB open Fail, \(memoDB.lastError())")
         }
         memoDB.close()
     }
@@ -427,7 +412,6 @@ extension HRListViewController: UITableViewDelegate {
         
         if memoDB.open(){
             let searchSQL = "SELECT * FROM MEMO WHERE CONTENT like '%\(text)%'"
-            print(searchSQL)
             
             do {
                 let result = try memoDB.executeQuery(searchSQL, values: [])
@@ -436,16 +420,11 @@ extension HRListViewController: UITableViewDelegate {
                     if let element = result.resultDictionary as? [String : Any] {
                         searchList.append(element)
                     }
-                    print("result.resultDictionary : \(String(describing: result.resultDictionary))")
                  }
                 changeContent()
-            
-                
             } catch  {
-                print("error")
             }
         } else {
-            print("Error : memoDB open Fail, \(memoDB.lastError())")
         }
         memoDB.close()
     }
